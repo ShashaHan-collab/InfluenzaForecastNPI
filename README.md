@@ -12,13 +12,20 @@ This model first estimates the individual effects of NPIs. It consists of two se
 # Prerequisites
 ## Prerequisite software
 •	Python version 3.6.13.
+
 •	R version 4.0.3.
+
 ## Prerequisite for third-party packages
 •	scikit-learn 0.24.2 (Python)
+
 •	tidyverse(R)
+
 •	glue(R)
+
 •	xlsx(R)
+
 •	cowplot(R)
+
 •	scales(R)
 # Descriptions of the files
 •	Source data forecast: The folder contains all the generated data for reproducing the figures in the paper : Han, S., Zhang, T., Lyu, Y. et al. The Incoming Influenza Season — China, the United Kingdom, and the United States, 2021–2022. China CDC Weekly 3(39):10.39-1045. (2021). http://weekly.chinacdc.cn/en/article/doi/10.46234/ccdcw2021.253.
