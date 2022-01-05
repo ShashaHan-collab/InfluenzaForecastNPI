@@ -28,7 +28,14 @@ This model first estimates the individual effects of NPIs. It consists of two se
 
 •	scales(R)
 # Descriptions of the files
+
+•	Source data effect: The folder contains all the generated data for reproducing the figures in the paper : Han, S., Zhang, T., Lyu, Y. et al. Influenza’s plummeting during the COVID-19 pandemic: the roles of mask-wearing, mobility change, and SARS-CoV-2 interference. Engineering (2022). Forthcoming.
+
+•	Source plot effect: The folder contains the plotting code for reproducing the figures in the paper : Han, S., Zhang, T., Lyu, Y. et al. Influenza’s plummeting during the COVID-19 pandemic: the roles of mask-wearing, mobility change, and SARS-CoV-2 interference. Engineering (2022). Forthcoming.
+![image](https://user-images.githubusercontent.com/77476226/148218681-cad68c67-250b-49ec-a018-7b7a29622db9.png)
+
 •	Source data forecast: The folder contains all the generated data for reproducing the figures in the paper : Han, S., Zhang, T., Lyu, Y. et al. The Incoming Influenza Season — China, the United Kingdom, and the United States, 2021–2022. China CDC Weekly 3(39):10.39-1045. (2021). http://weekly.chinacdc.cn/en/article/doi/10.46234/ccdcw2021.253.
+
 •	Source plot forecast: The folder contains the plotting code for reproducing the figures in the paper : Han, S., Zhang, T., Lyu, Y. et al. The Incoming Influenza Season — China, the United Kingdom, and the United States, 2021–2022. China CDC Weekly 3(39):10.39-1045. (2021). http://weekly.chinacdc.cn/en/article/doi/10.46234/ccdcw2021.253.
 
 
