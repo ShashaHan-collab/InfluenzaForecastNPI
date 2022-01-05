@@ -28,11 +28,30 @@ This model first estimates the individual effects of NPIs. It consists of two se
 
 •	scales(R)
 # Descriptions of the files
+•	preprocessing.py Python script for the pre-processing operation. The script process with the raw data and generates the intermediate data.
+
+•	utils.py Python script for the main operation. The script optimize allocation over the full period using the intermediate data generated from the pre-process. The script generates the XX with respect to the study region. 
+
+•	calavgpercent.py: Python script to XXX.
+
+•	calculateCI_v3.py: Python script to XXX.
+
+•	choosel_V2.py: Python script to XXX.
+
+•	imputation_reglike.py: Python script to XXX.
+
+•	moveandrename.py: Python script to XXX.
+
+•	movetoexcel.py: Python script to XXX.
+
+
+•	Example estimation: The folder contains the input, intermediary and output data for an example of running the estimation model.The demo uses the data from Northern China.
+
+•	Example forecast: The folder contains the input, intermediary and output data for an example of running the forecast model.The demo uses the data from Northern China.
 
 •	Source data effect: The folder contains all the generated data for reproducing the figures in the paper : Han, S., Zhang, T., Lyu, Y. et al. Influenza’s plummeting during the COVID-19 pandemic: the roles of mask-wearing, mobility change, and SARS-CoV-2 interference. Engineering (2022). Forthcoming.
 
 •	Source plot effect: The folder contains the plotting code for reproducing the figures in the paper : Han, S., Zhang, T., Lyu, Y. et al. Influenza’s plummeting during the COVID-19 pandemic: the roles of mask-wearing, mobility change, and SARS-CoV-2 interference. Engineering (2022). Forthcoming.
-![image](https://user-images.githubusercontent.com/77476226/148218681-cad68c67-250b-49ec-a018-7b7a29622db9.png)
 
 •	Source data forecast: The folder contains all the generated data for reproducing the figures in the paper : Han, S., Zhang, T., Lyu, Y. et al. The Incoming Influenza Season — China, the United Kingdom, and the United States, 2021–2022. China CDC Weekly 3(39):10.39-1045. (2021). http://weekly.chinacdc.cn/en/article/doi/10.46234/ccdcw2021.253.
 
