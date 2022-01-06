@@ -6,7 +6,7 @@ Han, S., Zhang, T., Lyu, Y. et al. The Incoming Influenza Season — China, the 
 
 Han, S., Zhang, T., Lyu, Y. et al. Influenza’s plummeting during the COVID-19 pandemic: the roles of mask-wearing, mobility change, and SARS-CoV-2 interference. Engineering (2022). Forthcoming.
 
-For an example run of estimation of individual effects of mask-wearing intervention, mobility change, and SARS-CoV2 interference in Northern China, please see "XXX.sh", which uses the processed intermediate dataset "XXX.csv". For an example run of forecast the influenza activity in Northern China in the 2021-2022 influenza season, please see " XXX.sh", which uses the processed intermediate dataset "XXX.csv". For an example run of pre-processing the raw data from Northern China, please see "XXX.sh", which generates the intermediate dataset "XXX.csv".
+For an example run of estimation of individual effects of mask-wearing intervention, mobility change, and SARS-CoV2 interference in the four regions that we studied in the paper, including nother China, southern China, England and the United States, please see "XXX.sh", which uses the processed intermediate dataset "XXX.csv". For an example run of forecast the influenza activity in the four regions in the 2021-2022 influenza season, please see " XXX.sh", which uses the processed intermediate dataset "XXX.csv". For an example run of pre-processing the raw data from the four regions, please see "XXX.sh", which generates the intermediate dataset "XXX.csv".
 # Overall model
 This model first estimates the individual effects of NPIs. It consists of two self-correcting regularized multiple regression models, both of which are dynamically trained and regularized using the LASSO method. Estimated effects were then used to predict the influenza activity in the future.
 # Prerequisites
@@ -45,9 +45,9 @@ This model first estimates the individual effects of NPIs. It consists of two se
 •	movetoexcel.py: Python script to XXX.
 
 
-•	Example estimation: The folder contains the input, intermediary and output data for an example of running the estimation model.The demo uses the data from Northern China.
+•	Example estimation: The folder contains the input, intermediary and output data for an example of running the estimation model. The demo uses the data from the four regions we studied in the paper.
 
-•	Example forecast: The folder contains the input, intermediary and output data for an example of running the forecast model.The demo uses the data from Northern China.
+•	Example forecast: The folder contains the input, intermediary and output data for an example of running the forecast model.The demo uses the data from the four regions we studied in the paper.
 
 •	Source data effect: The folder contains all the generated data for reproducing the figures in the paper : Han, S., Zhang, T., Lyu, Y. et al. Influenza’s plummeting during the COVID-19 pandemic: the roles of mask-wearing, mobility change, and SARS-CoV-2 interference. Engineering (2022). Forthcoming.
 
