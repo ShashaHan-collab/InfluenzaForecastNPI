@@ -1,4 +1,6 @@
 # this script calculates the mean and upperr/lower bound line from raw flu level data
+# edited SH: Q1. Could you clarify the purpose of the file? Q2. What do you mean by "raw flu level data"? 
+
 import pandas as pd
 from utils import *
 import numpy as np
@@ -15,7 +17,7 @@ def main():
 
     print('moving prediction result')
     exp_name = make_exp_name(paras, paras['lsa'])
-
+# Q3. Input ??. I didn't find the files in the folder. 
     rawdf = pd.read_csv('result/output'+exp_name+'.csv', header=0, index_col=0)
     targetdf = pd.DataFrame()
     targetdf['mean'] = rawdf.mean(axis=1)
