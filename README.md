@@ -30,19 +30,18 @@ This model first estimates the individual effects of NPIs. It consists of two se
 # Descriptions of the files
 •	preprocessing.py Python script for the pre-processing operation. The script process with the raw data and generates the intermediate data.
 
-•	utils.py Python script for the main operation. The script optimize allocation over the full period using the intermediate data generated from the pre-process. The script generates the XX with respect to the study region. 
+•	imputation_reglike.py: Python script for the main operation.[Is my interpretation here correct?] The script estimates the effect of one-week increase in NPIs and forecast seasonal influenza activities using the intermediate data generated from the pre-process. The script generates the XX with respect to the study regions. 
 
-•	calavgpercent.py: Python script to XXX.
+•	calavgpercent.py: Python script to calculate mean, upper and lower bound of XXX[??I am not clear here]. 
 
 •	calculateCI_v3.py: Python script to XXX.
 
-•	choosel_V2.py: Python script to XXX.
+•	choosel_V2.py[TODO: change the name to param_mask_reg.py]: Python script to select the parameters for the second muliple regression model that are used to estimate the effect of a 1-week increase of mask-wearing interventions.
 
-•	imputation_reglike.py: Python script to XXX.
 
-•	moveandrename.py: Python script to XXX.
+•	moveandrename.py[TODO: change the name to name_data.py?]: Python script to name intermediate data on estimates?? . [I didnot understand. ]
 
-•	movetoexcel.py: Python script to XXX.
+•	movetoexcel.py[TODO: change the name to gen_data_plot.py]: Python script to generate data as csv format for plotting in R.
 
 
 •	Example estimation: The folder contains the input, intermediary and output data for an example of running the estimation model. The demo uses the data from the four regions we studied in the paper.
