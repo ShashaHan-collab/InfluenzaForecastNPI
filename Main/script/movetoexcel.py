@@ -1,4 +1,4 @@
-# this script move the result of script/calavgpercent.py to the taget excel for future plot
+# Output the results as csv files for plotting in R
 import pandas as pd
 from utils import *
 import numpy as np
