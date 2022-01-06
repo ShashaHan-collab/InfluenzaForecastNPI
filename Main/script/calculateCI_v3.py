@@ -1,14 +1,16 @@
 # this script cauculates the mean and confidence interval for the effects we are interested in
+# SH Q1. pls add necessary interpretations, so that people can understand the what the codings are doing. 
 import pandas as pd
 import numpy as np
 
-
+# Q1. [TODO]Calculate the XXXX.
 def calculateCI(basepath, targetpath, basetype, starttime, endtime, tau=False, targettype='', tau_intercept=False, internationalvolume=False, bs=False):
     bstimes = 10000
     np.random.seed(0)
     mean, lower, upper = np.zeros((bstimes,)), np.zeros(
         (bstimes,)), np.zeros((bstimes,))
     result = None
+# Q2. [TODO]
     if internationalvolume:
         # tmpbase=pd.ExcelWriter(basepath+'.xlsx', mode='a')
         # tmpbase = pd.DataFrame(tmpbase.book['neithertwonpis'])
@@ -16,13 +18,14 @@ def calculateCI(basepath, targetpath, basetype, starttime, endtime, tau=False, t
             basepath+'.xlsx', sheet_name='neithertwonpis', header=0, index_col=0, engine='openpyxl')
     else:
         tmpbase = pd.read_csv(basepath, index_col=0, header=0)
-
+# Q3. [TODO]
     if 'average' in tmpbase.index.astype(str).values:
         tmpbase.drop(index=['average'], inplace=True)
     if 'lower' in tmpbase.index.astype(str).values:
         tmpbase.drop(index=['lower'], inplace=True)
     if 'upper' in tmpbase.index.astype(str).values:
         tmpbase.drop(index=['upper'], inplace=True)
+# Q4. [TODO]
     if tau_intercept:
         idx = tmpbase.index.values
         if bs:
@@ -37,6 +40,7 @@ def calculateCI(basepath, targetpath, basetype, starttime, endtime, tau=False, t
                 tmpbase.loc[idx, 'sumd'].values, bstimes, replace=True)
         else:
             result = tmpbase.loc[idx, 'sumd'].values
+            # Q5. [TODO]
     elif internationalvolume:
         coefdf = pd.read_csv(targetpath+'.csv', index_col=0, header=0)
         coef = coefdf.loc['average', 'vw']
@@ -81,7 +85,7 @@ def calculateCI(basepath, targetpath, basetype, starttime, endtime, tau=False, t
 
     return mean, lower, upper, result, median
 
-
+# Q6. TODO. Pls continue. At least intrepret the full coding for one region, e.g., Nothern China
 resultdf = pd.DataFrame(
     columns=['name', 'mean', 'lowerbound', 'upperbound', 'median', 'starttime', 'endtime'])
 
