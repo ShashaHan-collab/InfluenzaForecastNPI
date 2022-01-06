@@ -1,4 +1,5 @@
 # this script calculates the regression/lasso coefficients and do the prediction based on past flu level
+# SH Similarly, add neccesary intepretations on input data, main operations, and outputdata
 from tqdm import tqdm
 import numpy as np
 from sklearn.linear_model import LinearRegression
@@ -78,14 +79,14 @@ def main():
         intervolume_list.append('interv'+str(i+1))
 
     print('Processing Data')
-    # read raw data
+    # Input raw data [Q1: raw data??]
     rawdfbase, xtrain, ytrain, xval, yval, xpred, ypred, yamdf = load_data(
         lag, covariate_list, lag_list, direction, region, timepoint, uselog, treatmentindicator_list, causaltype, causallag, yam_region, volume_list, args, intervolume_list)
     print('trainging set start from: '+str(xtrain.index.values[0]))
 
     if paras['yam'] != '':
         amdf = pd.read_csv('data/'+paras['yam']+'.csv', header=0, index_col=0)
-    # trainmodel
+    # Train the model
     if alpha == 1 and model == 'lasso':
         alphas = [1e-5, 1e-4, 1e-03, 1e-02, 1e-01]
         # alpha = select_parameter(model, alphas, xtrain.values, ytrain.values)
@@ -124,7 +125,7 @@ def main():
         fitscore = 0
         valscore = 0
         trainscore = 0
-        print('Doing Prediction with alpha'+str(alpha))
+        print('Do Prediction with alpha'+str(alpha))
         # for episode in tqdm(range(repeatnum)):
         for episode in range(repeatnum):
             rawdf = rawdfbase.copy()
@@ -202,7 +203,7 @@ def main():
                 if args.vaccine != 1:
                     pred_y *= args.vaccine
 
-                # update seasonal indicator
+                # Update seasonal indicator
                 # if causaltype == 'vs' and pred_y.reshape(-1) >= 0.1:
                 #     rawdf.loc[idx, 'seasonindicator'] = 1
 
