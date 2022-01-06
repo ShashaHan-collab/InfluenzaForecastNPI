@@ -1,4 +1,4 @@
-# this script choose the best L/mu/delta for the mask model
+# Parameter selection for the second regression model that is used to estimate the effects of mask-wearing interventions
 from numpy.core.numeric import Inf
 import pandas as pd
 from sklearn import linear_model
@@ -36,16 +36,19 @@ def main():
     alphas = [0, 0.01, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5]
     deltas = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
     thetas = [0, 0.01, 0.05, 0.1, 0.5]
+    # Input the data on daily administrated doses of vaccines  
     vaccinedf = pd.read_csv('data/vaccine.csv', index_col=0, header=0)
     vaccine_data = vaccinedf.loc[vaccinestart:end, paras['vaccine']].values
 
     for theta in thetas:
         for delta in deltas:
+            # Input the data on mask index 
             ymaskdf = pd.read_csv(
                 'data/'+paras['ymask']+'.csv', header=0, index_col=0)
+            # Input the estimated percent posivities in scenarios with mobitlity-reated NPIs only[CORRECT?]
             hatydf = pd.read_csv(
                 'data/'+paras['haty']+'.csv', header=0, index_col=0)
-
+            # Choose the model for esimating mask-wearing interventions 
             if paras['model'] == 1:
                 vaccine_cpl = np.maximum(1-theta*vaccine_data, 0.5)-delta
             elif paras['model'] == 2:
@@ -67,6 +70,7 @@ def main():
                         l-1, idx, rawdf, 'forward', 'cpl')
                     rawdf.loc[idx, 'sumd'] = np.sum(
                         indicator*compliance)+rawdf.loc[idx, 't2']*rawdf.loc[idx, 'cpl']
+                # Do linear regression within prespecified region
                 lmodel = LinearRegression(fit_intercept=fitintercept)
                 xtrain = rawdf.loc[trainidx, 'sumd'].values.reshape(-1, 1)
                 ytrain = np.log(
@@ -87,6 +91,7 @@ def main():
                     coef = lmodel.coef_[0]
                     intercept = lmodel.intercept_ if fitintercept else 0
                     bestraw = rawdf.copy()
+            # Output the estimates and values of R squared. Best values are selected according to R squared criterion
             print('result for '+paras['ymask'] + " starting from "+str(
                 start)+' and theta=' + str(theta) + ' and delta=' + str(delta))
             print("max L = " + str(maxl))
