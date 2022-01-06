@@ -1,4 +1,5 @@
 # this scrpit can move and rename the raw flu/coefficient data file
+# SH. I didnot understand. Name intermediate data on estimates?? 
 import pandas as pd
 from utils import *
 import numpy as np
