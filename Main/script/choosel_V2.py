@@ -1,4 +1,4 @@
-# Parameter selection for the second regression model that is used to estimate the effects of mask-wearing interventions
+# Called by the bash script. Parameter selection for the second regression model that is used to estimate the effects of mask-wearing interventions
 from numpy.core.numeric import Inf
 import pandas as pd
 from sklearn import linear_model

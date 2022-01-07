@@ -1,5 +1,30 @@
-# this script calculates the regression/lasso coefficients and do the prediction based on past flu level
-# SH Similarly, add neccesary intepretations on input data, main operations, and outputdata
+# Called by the bash script. This script calculates the regression/lasso coefficients and do the prediction based on past flu level. The output of this script contains the coef of regression, the predicted flu level. Relevant parameters are as follow. 
+# rep - repeat times
+# model - lr for linear regression and lasso for Lasso
+# region - file name of the past data of positive rate
+# cov - name for covariates used in regression
+# tstart - starting time of training set
+# tend - ending time of training set
+# vstart - starting time of validation
+# vend - ending time of validation
+# pstart - starting time of prediction
+# pend - ending time of prediction
+# CI - output the fitted value on training set if set true
+# lsa - lasso penalty uesd
+# ctype - set to "new" for the mask model used
+# noint - set to true if ignore the intercept in regression
+# clag - length of lag L
+# loadcoef - load existing coef file if set. Used to accelerate the program
+# cpl - set the value of compliance between cpltp and cpled. 'a0': set to 0. 'a1': set to 1.
+# cpltp - time point
+# cpled - time point
+# seed - set the seed used
+# loadpositiverate - load existing positive rate file if set. Used to accelerate the program
+# newclag - whether use new lag for test effect of mask order after some time point
+# newclagnum - tensity of mask order
+# newclagtp - starting point of the new lag
+# vaccine - effect of vaccination
+
 from tqdm import tqdm
 import numpy as np
 from sklearn.linear_model import LinearRegression

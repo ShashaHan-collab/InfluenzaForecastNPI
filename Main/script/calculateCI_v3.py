@@ -1,16 +1,26 @@
-# this script cauculates the mean and confidence interval for the effects we are interested in
-# SH Q1. pls add necessary interpretations, so that people can understand the what the codings are doing. 
+# Called by the bash script. This script cauculates the mean and confidence interval for the effects we are interested in. Data used for calculation are first predicted by imputation_reglike.py, and later moved to "data/ci" folder by moveandrename.py.
 import pandas as pd
 import numpy as np
 
-# Q1. [TODO]Calculate the XXXX.
+# Takes in the parameters that representing the CI we are interested in, read the corresponding predicted values and calculates and returns the CI. The meaning for parameters are as follow
+# name = The type of CI we want to calculate
+# starttime = Starting time of the time interval that we calculate CI
+# endtime = Ending time of the time interval that we calculate CI
+# basepath = Path of file used as base in calculation of CI
+# targetpath = Path of file used as target in calculation of CI. By default, CI is confidence interval for target - base
+# basetype = Used for source file data format handling.
+# targettype = Used for source file data format handling.
+# tau = indicator for the calculation of CI for Tau
+# tau_intercept = indicator for the calculation of CI for the intercept of the mask model
+# internationalvolume = indicator for the calculation of CI for the coef of international volume/predicted flu level
+# bs = Whether to use bootstrap when calculating CI
 def calculateCI(basepath, targetpath, basetype, starttime, endtime, tau=False, targettype='', tau_intercept=False, internationalvolume=False, bs=False):
     bstimes = 10000
     np.random.seed(0)
     mean, lower, upper = np.zeros((bstimes,)), np.zeros(
         (bstimes,)), np.zeros((bstimes,))
     result = None
-# Q2. [TODO]
+
     if internationalvolume:
         # tmpbase=pd.ExcelWriter(basepath+'.xlsx', mode='a')
         # tmpbase = pd.DataFrame(tmpbase.book['neithertwonpis'])
@@ -18,14 +28,14 @@ def calculateCI(basepath, targetpath, basetype, starttime, endtime, tau=False, t
             basepath+'.xlsx', sheet_name='neithertwonpis', header=0, index_col=0, engine='openpyxl')
     else:
         tmpbase = pd.read_csv(basepath, index_col=0, header=0)
-# Q3. [TODO]
+
     if 'average' in tmpbase.index.astype(str).values:
         tmpbase.drop(index=['average'], inplace=True)
     if 'lower' in tmpbase.index.astype(str).values:
         tmpbase.drop(index=['lower'], inplace=True)
     if 'upper' in tmpbase.index.astype(str).values:
         tmpbase.drop(index=['upper'], inplace=True)
-# Q4. [TODO]
+
     if tau_intercept:
         idx = tmpbase.index.values
         if bs:
@@ -40,7 +50,6 @@ def calculateCI(basepath, targetpath, basetype, starttime, endtime, tau=False, t
                 tmpbase.loc[idx, 'sumd'].values, bstimes, replace=True)
         else:
             result = tmpbase.loc[idx, 'sumd'].values
-            # Q5. [TODO]
     elif internationalvolume:
         coefdf = pd.read_csv(targetpath+'.csv', index_col=0, header=0)
         coef = coefdf.loc['average', 'vw']
@@ -85,7 +94,7 @@ def calculateCI(basepath, targetpath, basetype, starttime, endtime, tau=False, t
 
     return mean, lower, upper, result, median
 
-# Q6. TODO. Pls continue. At least intrepret the full coding for one region, e.g., Nothern China
+
 resultdf = pd.DataFrame(
     columns=['name', 'mean', 'lowerbound', 'upperbound', 'median', 'starttime', 'endtime'])
 
@@ -115,6 +124,10 @@ usa21s = 202148
 usa21e = 202215
 hb19s = cn19s
 hb19e = cs19e
+
+# each part calcultes a CI. 
+
+
 
 print('calculating COVID-19 - No COVID')
 
