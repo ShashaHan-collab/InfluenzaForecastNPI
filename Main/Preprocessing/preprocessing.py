@@ -26,8 +26,8 @@ def find_rate(raw: DataFrame, direction, idx):
             break
     return rate
 
-basefolder = 'Preprocessing/'
-outputbasefolder='Preprocessing/output/'
+basefolder = 'Main/Preprocessing/'
+outputbasefolder='Main/data/'
 vaccinedf = pd.read_csv(basefolder+'rawdata/vaccine.csv', index_col=0, header=0)
 
 cnma = 30
@@ -1784,8 +1784,8 @@ domestic_mitigate_weekly.loc[:, 'domestic'] = domestic_mitigate_weekly.loc[:, 'd
 
 # international
 # using the international mobility in Southern China
-cs = pd.read_csv(basefolder+'output/csib3.csv', header=0, index_col=0)
-csv2 = pd.read_csv(basefolder+'output/csiv2b3.csv', header=0, index_col=0)
+cs = pd.read_csv(outputbasefolder+'csib3.csv', header=0, index_col=0)
+csv2 = pd.read_csv(outputbasefolder+'csiv2b3.csv', header=0, index_col=0)
 
 # file output
 # hb
