@@ -68,51 +68,51 @@ python script/moveandrename.py --lag 52 --region ukv2 --tstart 201140 --tend 202
 python script/imputation_reglike.py --lag 52 --region usav2 --tstart 201140 --tend 202011 --pstart 202140 --pend 202252 --cov volume,vw --lsa 1e-05 --loadcoef usacoef --loadpositiverate usa3hatym
 python script/moveandrename.py --lag 52 --region usav2 --tstart 201140 --tend 202011 --pstart 202140 --pend 202252 --cov volume,vw --lsa 1e-05 --targetname usa3hatyfmsn --targetfolder data
 python script/moveandrename.py --lag 52 --region usav2 --tstart 201140 --tend 202011 --pstart 202140 --pend 202252 --cov volume,vw --lsa 1e-05 --targetname usa3hatyfmsn --targetfolder result
-# predict different scenarios with and without covid-19
-# dos2unix bash/plot4regioncovid19.sh
-bash bash/plot4regioncovid19.sh
-# predict different scenarios with and without covid-19 in Hubei
-# dos2unix bash/plothbcovid19.sh
-bash bash/plothbcovid19.sh
-# predict data for fig 1 and 2
-# dos2unix bash/plot4regioncolleterial.sh
-bash bash/plot4regioncolleterial.sh
-# predict the no-npi data in fig 4
-# dos2unix bash/plot4regioncompare.sh
-bash bash/plot4regioncompare.sh
-# predict the flu level under mask wearing order in fig 4 and 5
-# dos2unix bash/plot4regionfuturemask.sh
-bash bash/plot4regionfuturemask.sh
-# predict the flu level for different international travel volume in fig 4 and 5
-# dos2unix bash/plot4regionfutureinternational.sh
-bash bash/plot4regionfutureinternational.sh
-# predict the flu level for different domestic travel volume in fig 4 and 5
-# dos2unix bash/plot4regionfuturedomestic.sh
-bash bash/plot4regionfuturedomestic.sh
-# predict the flu level under different effectiveness of mask wearing in Extended Data Fig. 3
-# dos2unix bash/plot4regionfuturemask_fullwithoutsumD.sh
-bash bash/plot4regionfuturemask_fullwithoutsumD.sh
-# predict the flu level under vaccination in Extended Data Fig. 3
-# dos2unix bash/plot4regionfuturemask_vaccine.sh
-bash bash/plot4regionfuturemask_vaccine.sh
-# predict the flu level under mask wearing order with mask model effective for the whole time in Extended Data Fig. 3
-# dos2unix bash/plot4regionfuturemask_withsumD.sh
-bash bash/plot4regionfuturemask_withsumD.sh
-# predict the flu level under international/domestic travel volume change alone in Extended Data Fig. 2
+# predict different scenarios with and without covid-19 and prepare source data for figure "Estimated influenza activities under the scenarios with no SARS-COV-2 transmission and with SARS-COV-2 transmission, both without COVID-19 NPIs"
+# dos2unix bash/covid19.sh
+bash bash/covid19.sh
+# predict different scenarios with and without covid-19 in Hubei and prepare source data for figure "Estimated influenza activities under the scenarios with no SARS-COV-2 transmission and with SARS-COV-2 transmission, both without COVID-19 NPIs in Hubei Province, China."
+# dos2unix bash/hbcovid19.sh
+bash bash/hbcovid19.sh
+# predict and prepare source data for figure "Estimated influenza activities under the mask-wearing order alone and no intervention as well as the observed activity" and "Estimated influenza activities under the mobility change alone and no intervention as well as the observed activity."
+# dos2unix bash/colleterial.sh
+bash bash/colleterial.sh
+# predict the no-npi data in the futrue and prepare source data for figure "Predicted influenza activities in 2021–2022 season under no NPI and varying NPIs.", "Predicted influenza activities in 2021–2022 season under NPIs with alternative assumptions" and "Predicted influenza activities in 2021–2022 season under alternative mask-wearing interventions and combined NPIs"
+# dos2unix bash/compare.sh
+bash bash/compare.sh
+# predict the flu level under mask wearing order and prepare source data for figure "Predicted influenza activities in 2021–2022 season under no NPI and varying NPIs" and "Predicted influenza activities in 2021–2022 season under NPIs with alternative assumptions"
+# dos2unix bash/futuremask.sh
+bash bash/futuremask.sh
+# predict the flu level for different international travel volume and prepare source data for figure "Predicted influenza activities in 2021–2022 season under NPIs with alternative assumptions"
+# dos2unix bash/futureinternational.sh
+bash bash/futureinternational.sh
+# predict the flu level for different domestic travel volume and prepare source data for figure "Predicted influenza activities in 2021–2022 season under NPIs with alternative assumptions"
+# dos2unix bash/futuredomestic.sh
+bash bash/futuredomestic.sh
+# predict the flu level under different effectiveness of mask wearing and prepare source data for figure "Predicted influenza activities in 2021–2022 season under alternative mask-wearing interventions and combined NPIs"
+# dos2unix bash/futuremask_fullwithoutsumD.sh
+bash bash/futuremask_fullwithoutsumD.sh
+# predict the flu level under vaccination and prepare source data for figure "Predicted influenza activities in 2021–2022 season under alternative mask-wearing interventions and combined NPIs"
+# dos2unix bash/futuremask_vaccine.sh
+bash bash/futuremask_vaccine.sh
+# predict the flu level under mask wearing order with mask model effective for the whole time and prepare source data for figure "Predicted influenza activities in 2021–2022 season under alternative mask-wearing interventions and combined NPIs"
+# dos2unix bash/futuremask_withsumD.sh
+bash bash/futuremask_withsumD.sh
+# predict the flu level under international/domestic travel volume change alone and prepare source data for figure "Estimated influenza activities under the international mobility change alone, the domestic mobility change alone and no intervention as well as the observed activity"
 # dos2unix bash/testformobilityintdom.sh
 bash bash/testformobilityintdom.sh
-# predict the effect of different combinations of npis in the future
-# dos2unix bash/plotfuturepolicy.sh
-bash bash/plotfuturepolicy.sh
-# calculate the data for the fitness of our model
-# dos2unix bash/plotfit.sh
-bash bash/plotfit.sh
+# predict the effect of different combinations of npis in the future and prepare source data for figure "Predicted influenza activities in 2021–2022 season under alternative mask-wearing interventions and combined NPIs"
+# dos2unix bash/futurepolicy.sh
+bash bash/futurepolicy.sh
+# calculate the data for the fitness of our model and prepare source data for figure "Influenza activity in 2011-2021"
+# dos2unix bash/fit.sh
+bash bash/fit.sh
 # estimate the value of tau in mask model
 # dos2unix bash/maketau.sh
 bash bash/maketau.sh
 # calculate the estimated confidence intervals under different scenarios
 python script/calculateCI_v3.py
-# validation
+# validation and prepare source data for figure "Fitted influenza activity that is obtained from using the 2011-2016 data for training and the 2017 data for test, in comparison to observed influenza activity", "Fitted influenza activity that is obtained from using the 2011-2017 data for training and the 2018 data for test, in comparison to observed influenza activity" and "Fitted influenza activity that is obtained from using the 2011-2018 data for training and the 2019 data for test, in comparison to observed influenza activity"
 bash bash/validation.sh
 bash bash/validation17.sh
 bash bash/validation18.sh
