@@ -1,5 +1,6 @@
-# Called by the bash script. Input with outputs of "calculate_plot_statistics.py" 
-# and generate source data for plotting.
+# Called by the bash script. 
+# This axuiliary scripts generates source data for plotting using output data from "calculate_plot_statistics.py".
+
 
 import pandas as pd
 from utils import *
