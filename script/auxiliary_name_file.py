@@ -12,7 +12,7 @@ def main():
     universalparser(parser)
 
     parser.add_argument("--targetname", type=str)
-    parser.add_argument("--targetfolder", type=str, default='preprocessed data')
+    parser.add_argument("--targetfolder", type=str, default='preprocessed_data')
     parser.add_argument("--sourcetype", type=str, default='output')
     parser.add_argument("--movetype", type=str, default='move')
     args = parser.parse_args()

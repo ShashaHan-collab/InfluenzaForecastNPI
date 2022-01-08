@@ -27,7 +27,7 @@ python script/auxiliary_gen_excel_data.py --sourcecsv csmask51-4_d --targetexcel
 python script/estimation_forecast.py --lag 52 --region cslog --tstart 202004 --tend 202128 --pstart 202129 --pend 202252 --ctype new --clag 11 --yam csihatyfmsn --model lr --cpl a1 --noint --cpltp 202145 --cpled 202215 --loadcoef cscoefmask
 python script/calculate_plot_statistics.py --lag 52 --region cslog --tstart 202004 --tend 202128 --pstart 202129 --pend 202252 --ctype new --clag 11 --yam csihatyfmsn --model lr --cpl a1 --noint --cpltp 202145 --cpled 202215 --targetname csmask_d
 python script/auxiliary_gen_excel_data.py --sourcecsv csmask_d --targetexcel result/future/cs --targetsheetname mask_d
-# uk
+# england
 # data
 # mask wearing order for the full season
 python script/estimation_forecast.py --lag 52 --region uklog --tstart 202030 --tend 202128 --pstart 202129 --pend 202252 --ctype new --clag 24 --yam uk3hatyfmsn --model lr --cpl a1 --noint --cpltp 202150 --cpled 202205 --loadcoef ukcoefmask

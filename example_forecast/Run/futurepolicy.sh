@@ -48,7 +48,7 @@ python script/auxiliary_name_file.py --lag 52 --region csimvmi --tstart 201140 -
 python script/estimation_forecast.py --lag 52 --region cslog --tstart 202004 --tend 202128 --pstart 202129 --pend 202252 --ctype new --clag 11 --yam csihatymvmi --model lr --cpl a0 --noint --cpltp 202140 --loadcoef cscoefmask
 python script/calculate_plot_statistics.py --lag 52 --region cslog --tstart 202004 --tend 202128 --pstart 202129 --pend 202252 --ctype new --clag 11 --yam csihatymvmi --model lr --cpl a0 --noint --cpltp 202140 --targetname csmvmi
 python script/auxiliary_gen_excel_data.py --sourcecsv csmvmi --targetexcel result/combinenpi/cs --targetsheetname mvmi
-# uk
+# england
 # data
 # mask wearing order for the full season
 python script/estimation_forecast.py --lag 52 --region uklog --tstart 202030 --tend 202128 --pstart 202030 --pend 202252 --ctype new --clag 24 --yam uk3hatynvmi --model lr --cpl a1 --noint --cpltp 202150 --cpled 202213 --loadcoef ukcoefmask
@@ -56,7 +56,7 @@ python script/auxiliary_name_file.py --lag 52 --region uklog --tstart 202030 --t
 python script/estimation_forecast.py --lag 52 --region uknvmi --tstart 201140 --tend 202010 --pstart 202214 --pend 202252 --cov volume,vw --lsa 1e-05  --loadpositiverate ukmask50ifirststage --loadcoef ukcoef
 python script/calculate_plot_statistics.py --lag 52 --region uknvmi --tstart 201140 --tend 202010 --pstart 202214 --pend 202252 --cov volume,vw --lsa 1e-05 --targetname ukmask50i
 python script/auxiliary_gen_excel_data.py --sourcecsv ukmask50i --targetexcel result/combinenpi/uk --targetsheetname mask50i
-# uk
+# england
 # data
 # mask wearing order for the full season
 python script/estimation_forecast.py --lag 52 --region uklog --tstart 202030 --tend 202128 --pstart 202030 --pend 202252 --ctype new --clag 24 --yam uk3hatymvni --model lr --cpl a1 --noint --cpltp 202150 --cpled 202213 --loadcoef ukcoefmask
@@ -64,7 +64,7 @@ python script/auxiliary_name_file.py --lag 52 --region uklog --tstart 202030 --t
 python script/estimation_forecast.py --lag 52 --region ukmvni --tstart 201140 --tend 202010 --pstart 202214 --pend 202252 --cov volume,vw --lsa 1e-05  --loadpositiverate ukmask50vfirststage --loadcoef ukcoef
 python script/calculate_plot_statistics.py --lag 52 --region ukmvni --tstart 201140 --tend 202010 --pstart 202214 --pend 202252 --cov volume,vw --lsa 1e-05 --targetname ukmask50v
 python script/auxiliary_gen_excel_data.py --sourcecsv ukmask50v --targetexcel result/combinenpi/uk --targetsheetname mask50v
-# uk
+# england
 # prepare data
 python script/estimation_forecast.py --lag 52 --region ukmvmi --tstart 201140 --tend 202010 --pstart 202140 --pend 202252 --cov volume,vw --lsa 1e-05 --loadcoef ukcoef --loadpositiverate uk3hatym
 python script/auxiliary_name_file.py --lag 52 --region ukmvmi --tstart 201140 --tend 202010 --pstart 202140 --pend 202252 --cov volume,vw --lsa 1e-05 --targetname uk3hatymvmi

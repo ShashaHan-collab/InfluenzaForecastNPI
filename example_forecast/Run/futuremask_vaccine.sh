@@ -53,7 +53,7 @@ python script/auxiliary_name_file.py --lag 52 --region cslog --tstart 202004 --t
 python script/estimation_forecast.py --lag 52 --region csiv2b3 --tstart 201140 --tend 202003 --pstart 202216 --pend 202252 --cov volume,vw --lsa 1e-05 --vaccine 0.88 --loadpositiverate csvaccine_30_first --loadcoef cscoef
 python script/calculate_plot_statistics.py --lag 52 --region csiv2b3 --tstart 201140 --tend 202003 --pstart 202216 --pend 202252 --cov volume,vw --lsa 1e-05 --vaccine 0.88 --targetname csvaccine_30
 python script/auxiliary_gen_excel_data.py --sourcecsv csvaccine_30 --targetexcel result/future/cs --targetsheetname vaccine_30
-# uk
+# england
 # data
 # flu level with novaccine and mask level at 30%
 python script/estimation_forecast.py --lag 52 --region uklog --tstart 202030 --tend 202128 --pstart 202030 --pend 202252 --ctype new --clag 24 --yam uk3hatyfmsn --model lr --cpl a3 --noint --cpltp 202150 --cpled 202213 --newclag --newclagtp 202150 --newclagnum 3 --loadcoef ukcoefmask

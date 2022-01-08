@@ -46,7 +46,7 @@ python script/estimation_forecast.py --lag 52 --region usav2 --tstart 201140 --t
 python script/auxiliary_name_file.py --lag 52 --region usav2 --tstart 201140 --tend 202011 --pstart 202012 --pend 202139 --cov volume,vw --lsa 1e-05 --targetname usanonpi --targetfolder result/ci
 python script/calculate_plot_statistics.py --lag 52 --region usav2 --tstart 201140 --tend 202011 --pstart 202012 --pend 202139 --cov volume,vw --lsa 1e-05 --targetname usanonpi
 python script/auxiliary_gen_excel_data.py --sourcecsv usanonpi --targetexcel result/colleterialeffects/usa --targetsheetname neithertwonpis
-# uk
+# england
 # movement restriction
 python script/estimation_forecast.py --lag 52 --region uk --tstart 201140 --tend 202010 --pstart 202011 --pend 202139 --cov volume,vw --lsa 1e-05
 python script/auxiliary_name_file.py --lag 52 --region uk --tstart 201140 --tend 202010 --pstart 202011 --pend 202139 --cov volume,vw --lsa 1e-05 --targetname ukmobility --targetfolder result/ci

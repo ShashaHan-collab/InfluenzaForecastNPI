@@ -20,7 +20,7 @@ python script/estimation_forecast.py --lag 52 --region csiv2b3 --tstart 201140 -
 python script/auxiliary_name_file.py --lag 52 --region csiv2b3 --tstart 201140 --tend 202003 --pstart 202004 --pend 202139 --cov volume,vw --lsa 1e-05 --targetname cscovid --targetfolder result/ci
 python script/calculate_plot_statistics.py --lag 52 --region csiv2b3 --tstart 201140 --tend 202003 --pstart 202004 --pend 202139 --cov volume,vw --lsa 1e-05 --targetname cscovid
 python script/auxiliary_gen_excel_data.py --sourcecsv cscovid --targetexcel result/covid19/cs --targetsheetname covid19
-# uk
+# england
 # with covid19
 python script/estimation_forecast.py --lag 52 --region ukv2 --tstart 201140 --tend 201952 --pstart 202001 --pend 202139 --cov volume,vw --lsa 1e-05
 python script/auxiliary_name_file.py --lag 52 --region ukv2 --tstart 201140 --tend 201952 --pstart 202001 --pend 202139 --cov volume,vw --lsa 1e-05 --targetname uknocovid --targetfolder result/ci

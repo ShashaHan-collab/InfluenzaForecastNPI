@@ -114,7 +114,7 @@ def main():
     print('trainging set start from: '+str(xtrain.index.values[0]))
 
     if paras['yam'] != '':
-        amdf = pd.read_csv('preprocessed data/'+paras['yam']+'.csv', header=0, index_col=0)
+        amdf = pd.read_csv('preprocessed_data/'+paras['yam']+'.csv', header=0, index_col=0)
     # Train the model
     if alpha == 1 and model == 'lasso':
         alphas = [1e-5, 1e-4, 1e-03, 1e-02, 1e-01]

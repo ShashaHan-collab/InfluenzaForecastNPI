@@ -10,7 +10,7 @@ python script/estimation_forecast.py --lag 52 --region csib3 --tstart 201140 --t
 python script/auxiliary_name_file.py --lag 52 --region csib3 --tstart 201140 --tend 201852 --vstart 201901 --vend 201952 --pstart 202004 --pend 202004 --cov volume,vw --lsa 1e-05 --CI --targetname cscoefval --targetfolder result --sourcetype coef
 python script/calculate_plot_statistics.py --lag 52 --region csib3 --tstart 201140 --tend 201852 --vstart 201901 --vend 201952 --pstart 202004 --pend 202004 --cov volume,vw --lsa 1e-05 --CI --targetname csval
 python script/auxiliary_gen_excel_data.py --sourcecsv csval --targetexcel result/colleterialeffects/cs --targetsheetname val
-# uk
+# england
 python script/estimation_forecast.py --lag 52 --region uk --tstart 201140 --tend 201852 --vstart 201901 --vend 201952 --pstart 202011 --pend 202011 --cov volume,vw --lsa 1e-05 --CI
 python script/auxiliary_name_file.py --lag 52 --region uk --tstart 201140 --tend 201852 --vstart 201901 --vend 201952 --pstart 202011 --pend 202011 --cov volume,vw --lsa 1e-05 --CI --targetname ukcoefval --targetfolder result --sourcetype coef
 python script/calculate_plot_statistics.py --lag 52 --region uk --tstart 201140 --tend 201852 --vstart 201901 --vend 201952 --pstart 202011 --pend 202011 --cov volume,vw --lsa 1e-05 --CI --targetname ukval

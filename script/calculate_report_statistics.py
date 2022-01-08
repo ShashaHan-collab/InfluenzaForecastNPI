@@ -135,8 +135,8 @@ print('calculating COVID-19 - No COVID')
 name = 'Northern China: COVID-19 - No COVID'
 starttime = cn19s
 endtime = cn19e
-basepath = 'preprocessed data/ci/cnnocovid.csv'
-targetpath = 'preprocessed data/ci/cncovid.csv'
+basepath = 'result/ci/cnnocovid.csv'
+targetpath = 'result/ci/cncovid.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -147,8 +147,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Northern China: COVID-19 - No COVID'
 starttime = cn20s
 endtime = cn20e
-basepath = 'preprocessed data/ci/cnnocovid.csv'
-targetpath = 'preprocessed data/ci/cncovid.csv'
+basepath = 'result/ci/cnnocovid.csv'
+targetpath = 'result/ci/cncovid.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -159,8 +159,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Southern China: COVID-19 - No COVID'
 starttime = cs19s
 endtime = cs19e
-basepath = 'preprocessed data/ci/csnocovid.csv'
-targetpath = 'preprocessed data/ci/cscovid.csv'
+basepath = 'result/ci/csnocovid.csv'
+targetpath = 'result/ci/cscovid.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -171,8 +171,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Southern China: COVID-19 - No COVID'
 starttime = cs20s
 endtime = cs20e
-basepath = 'preprocessed data/ci/csnocovid.csv'
-targetpath = 'preprocessed data/ci/cscovid.csv'
+basepath = 'result/ci/csnocovid.csv'
+targetpath = 'result/ci/cscovid.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -183,8 +183,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'England: COVID-19 - No COVID'
 starttime = uk19s
 endtime = uk19e
-basepath = 'preprocessed data/ci/uknocovid.csv'
-targetpath = 'preprocessed data/ci/ukcovid.csv'
+basepath = 'result/ci/uknocovid.csv'
+targetpath = 'result/ci/ukcovid.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -195,8 +195,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'England: COVID-19 - No COVID'
 starttime = uk20s
 endtime = uk20e
-basepath = 'preprocessed data/ci/uknocovid.csv'
-targetpath = 'preprocessed data/ci/ukcovid.csv'
+basepath = 'result/ci/uknocovid.csv'
+targetpath = 'result/ci/ukcovid.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -207,8 +207,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'U.S.: COVID-19 - No COVID'
 starttime = usa19s
 endtime = usa19e
-basepath = 'preprocessed data/ci/usanocovid.csv'
-targetpath = 'preprocessed data/ci/usacovid.csv'
+basepath = 'result/ci/usanocovid.csv'
+targetpath = 'result/ci/usacovid.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -219,8 +219,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'U.S.: COVID-19 - No COVID'
 starttime = usa20s
 endtime = usa20e
-basepath = 'preprocessed data/ci/usanocovid.csv'
-targetpath = 'preprocessed data/ci/usacovid.csv'
+basepath = 'result/ci/usanocovid.csv'
+targetpath = 'result/ci/usacovid.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -231,8 +231,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Hubei: COVID-19 - No COVID'
 starttime = hb19s
 endtime = hb19e
-basepath = 'preprocessed data/ci/hbnocovid.csv'
-targetpath = 'preprocessed data/ci/hbcovid.csv'
+basepath = 'result/ci/hbnocovid.csv'
+targetpath = 'result/ci/hbcovid.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -245,8 +245,8 @@ print('calculating mask - No npi')
 name = 'Northern China: mask - No npi'
 starttime = cn19s
 endtime = cn19e
-basepath = 'preprocessed data/ci/cnnonpi.csv'
-targetpath = 'preprocessed data/ci/cnmask.csv'
+basepath = 'result/ci/cnnonpi.csv'
+targetpath = 'result/ci/cnmask.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -257,8 +257,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Northern China: mask - No npi'
 starttime = cn20s
 endtime = cn20e
-basepath = 'preprocessed data/ci/cnnonpi.csv'
-targetpath = 'preprocessed data/ci/cnmask.csv'
+basepath = 'result/ci/cnnonpi.csv'
+targetpath = 'result/ci/cnmask.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -269,8 +269,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Southern China: mask - No npi'
 starttime = cs19s
 endtime = cs19e
-basepath = 'preprocessed data/ci/csnonpi.csv'
-targetpath = 'preprocessed data/ci/csmask.csv'
+basepath = 'result/ci/csnonpi.csv'
+targetpath = 'result/ci/csmask.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -281,8 +281,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Southern China: mask - No npi'
 starttime = cs20s
 endtime = cs20e
-basepath = 'preprocessed data/ci/csnonpi.csv'
-targetpath = 'preprocessed data/ci/csmask.csv'
+basepath = 'result/ci/csnonpi.csv'
+targetpath = 'result/ci/csmask.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -293,8 +293,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'England: mask - No npi'
 starttime = uk19s
 endtime = uk19e
-basepath = 'preprocessed data/ci/uknonpi.csv'
-targetpath = 'preprocessed data/ci/ukmask.csv'
+basepath = 'result/ci/uknonpi.csv'
+targetpath = 'result/ci/ukmask.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -305,8 +305,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'England: mask - No npi'
 starttime = uk20s
 endtime = uk20e
-basepath = 'preprocessed data/ci/uknonpi.csv'
-targetpath = 'preprocessed data/ci/ukmask.csv'
+basepath = 'result/ci/uknonpi.csv'
+targetpath = 'result/ci/ukmask.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -317,8 +317,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'U.S.: mask - No npi'
 starttime = usa19s
 endtime = usa19e
-basepath = 'preprocessed data/ci/usanonpi.csv'
-targetpath = 'preprocessed data/ci/usamask.csv'
+basepath = 'result/ci/usanonpi.csv'
+targetpath = 'result/ci/usamask.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -329,8 +329,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'U.S.: mask - No npi'
 starttime = usa20s
 endtime = usa20e
-basepath = 'preprocessed data/ci/usanonpi.csv'
-targetpath = 'preprocessed data/ci/usamask.csv'
+basepath = 'result/ci/usanonpi.csv'
+targetpath = 'result/ci/usamask.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -342,8 +342,8 @@ print('calculating mobility - No npi')
 name = 'Northern China: mobility - No npi'
 starttime = cn19s
 endtime = cn19e
-basepath = 'preprocessed data/ci/cnnonpi.csv'
-targetpath = 'preprocessed data/ci/cnmobility.csv'
+basepath = 'result/ci/cnnonpi.csv'
+targetpath = 'result/ci/cnmobility.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -354,8 +354,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Northern China: mobility - No npi'
 starttime = cn20s
 endtime = cn20e
-basepath = 'preprocessed data/ci/cnnonpi.csv'
-targetpath = 'preprocessed data/ci/cnmobility.csv'
+basepath = 'result/ci/cnnonpi.csv'
+targetpath = 'result/ci/cnmobility.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -366,8 +366,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Southern China: mobility - No npi'
 starttime = cs19s
 endtime = cs19e
-basepath = 'preprocessed data/ci/csnonpi.csv'
-targetpath = 'preprocessed data/ci/csmobility.csv'
+basepath = 'result/ci/csnonpi.csv'
+targetpath = 'result/ci/csmobility.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -378,8 +378,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Southern China: mobility - No npi'
 starttime = cs20s
 endtime = cs20e
-basepath = 'preprocessed data/ci/csnonpi.csv'
-targetpath = 'preprocessed data/ci/csmobility.csv'
+basepath = 'result/ci/csnonpi.csv'
+targetpath = 'result/ci/csmobility.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -390,8 +390,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'England: mobility - No npi'
 starttime = uk19s
 endtime = uk19e
-basepath = 'preprocessed data/ci/uknonpi.csv'
-targetpath = 'preprocessed data/ci/ukmobility.csv'
+basepath = 'result/ci/uknonpi.csv'
+targetpath = 'result/ci/ukmobility.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -402,8 +402,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'England: mobility - No npi'
 starttime = uk20s
 endtime = uk20e
-basepath = 'preprocessed data/ci/uknonpi.csv'
-targetpath = 'preprocessed data/ci/ukmobility.csv'
+basepath = 'result/ci/uknonpi.csv'
+targetpath = 'result/ci/ukmobility.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -414,8 +414,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'U.S.: mobility - No npi'
 starttime = usa19s
 endtime = usa19e
-basepath = 'preprocessed data/ci/usanonpi.csv'
-targetpath = 'preprocessed data/ci/usamobility.csv'
+basepath = 'result/ci/usanonpi.csv'
+targetpath = 'result/ci/usamobility.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -426,8 +426,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'U.S.: mobility - No npi'
 starttime = usa20s
 endtime = usa20e
-basepath = 'preprocessed data/ci/usanonpi.csv'
-targetpath = 'preprocessed data/ci/usamobility.csv'
+basepath = 'result/ci/usanonpi.csv'
+targetpath = 'result/ci/usamobility.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -439,8 +439,8 @@ print('calculating npi - No npi')
 name = 'Northern China: npi - No npi'
 starttime = cn19s
 endtime = cn19e
-basepath = 'preprocessed data/ci/cnnonpi.csv'
-targetpath = 'preprocessed data/cni.csv'
+basepath = 'result/ci/cnnonpi.csv'
+targetpath = 'preprocessed_data/cni.csv'
 basetype = ''
 targettype = 'positive_rate'
 mean, lower, upper, _, median = calculateCI(
@@ -452,8 +452,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Northern China: npi - No npi'
 starttime = cn20s
 endtime = cn20e
-basepath = 'preprocessed data/ci/cnnonpi.csv'
-targetpath = 'preprocessed data/cni.csv'
+basepath = 'result/ci/cnnonpi.csv'
+targetpath = 'preprocessed_data/cni.csv'
 basetype = ''
 targettype = 'positive_rate'
 mean, lower, upper, _, median = calculateCI(
@@ -465,8 +465,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Southern China: npi - No npi'
 starttime = cs19s
 endtime = cs19e
-basepath = 'preprocessed data/ci/csnonpi.csv'
-targetpath = 'preprocessed data/csib3.csv'
+basepath = 'result/ci/csnonpi.csv'
+targetpath = 'preprocessed_data/csib3.csv'
 basetype = ''
 targettype = 'positive_rate'
 mean, lower, upper, _, median = calculateCI(
@@ -478,8 +478,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Southern China: npi - No npi'
 starttime = cs20s
 endtime = cs20e
-basepath = 'preprocessed data/ci/csnonpi.csv'
-targetpath = 'preprocessed data/csib3.csv'
+basepath = 'result/ci/csnonpi.csv'
+targetpath = 'preprocessed_data/csib3.csv'
 basetype = ''
 targettype = 'positive_rate'
 mean, lower, upper, _, median = calculateCI(
@@ -491,8 +491,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'England: npi - No npi'
 starttime = uk19s
 endtime = uk19e
-basepath = 'preprocessed data/ci/uknonpi.csv'
-targetpath = 'preprocessed data/uk.csv'
+basepath = 'result/ci/uknonpi.csv'
+targetpath = 'preprocessed_data/uk.csv'
 basetype = ''
 targettype = 'positive_rate'
 mean, lower, upper, _, median = calculateCI(
@@ -504,8 +504,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'England: npi - No npi'
 starttime = uk20s
 endtime = uk20e
-basepath = 'preprocessed data/ci/uknonpi.csv'
-targetpath = 'preprocessed data/uk.csv'
+basepath = 'result/ci/uknonpi.csv'
+targetpath = 'preprocessed_data/uk.csv'
 basetype = ''
 targettype = 'positive_rate'
 mean, lower, upper, _, median = calculateCI(
@@ -517,8 +517,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'U.S.: npi - No npi'
 starttime = usa19s
 endtime = usa19e
-basepath = 'preprocessed data/ci/usanonpi.csv'
-targetpath = 'preprocessed data/usa.csv'
+basepath = 'result/ci/usanonpi.csv'
+targetpath = 'preprocessed_data/usa.csv'
 basetype = ''
 targettype = 'positive_rate'
 mean, lower, upper, _, median = calculateCI(
@@ -530,8 +530,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'U.S.: npi - No npi'
 starttime = usa20s
 endtime = usa20e
-basepath = 'preprocessed data/ci/usanonpi.csv'
-targetpath = 'preprocessed data/usa.csv'
+basepath = 'result/ci/usanonpi.csv'
+targetpath = 'preprocessed_data/usa.csv'
 basetype = ''
 targettype = 'positive_rate'
 mean, lower, upper, _, median = calculateCI(
@@ -544,8 +544,8 @@ print('calculating future mask - No npi')
 name = 'Northern China: future mask - No npi'
 starttime = cn21s
 endtime = cn21e
-basepath = 'preprocessed data/ci/cn21nomask.csv'
-targetpath = 'preprocessed data/ci/cn21mask.csv'
+basepath = 'result/ci/cn21nomask.csv'
+targetpath = 'result/ci/cn21mask.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -556,8 +556,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Southern China: future mask - No npi'
 starttime = cs21s
 endtime = cs21e
-basepath = 'preprocessed data/ci/cs21nomask.csv'
-targetpath = 'preprocessed data/ci/cs21mask.csv'
+basepath = 'result/ci/cs21nomask.csv'
+targetpath = 'result/ci/cs21mask.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -568,8 +568,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'England: future mask - No npi'
 starttime = uk21s
 endtime = uk21e
-basepath = 'preprocessed data/ci/uk21nomask.csv'
-targetpath = 'preprocessed data/ci/uk21mask.csv'
+basepath = 'result/ci/uk21nomask.csv'
+targetpath = 'result/ci/uk21mask.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -580,8 +580,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'U.S.: future mask - No npi'
 starttime = usa21s
 endtime = usa21e
-basepath = 'preprocessed data/ci/usa21nomask.csv'
-targetpath = 'preprocessed data/ci/usa21mask.csv'
+basepath = 'result/ci/usa21nomask.csv'
+targetpath = 'result/ci/usa21mask.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -593,8 +593,8 @@ print('calculating future Inbound mobility')
 name = 'Northern China: future Inbound mobility'
 starttime = cn21s
 endtime = cn21e
-basepath = 'preprocessed data/ci/cn21nomask.csv'
-targetpath = 'preprocessed data/ci/cn21mi.csv'
+basepath = 'result/ci/cn21nomask.csv'
+targetpath = 'result/ci/cn21mi.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -605,8 +605,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Southern China: future Inbound mobility'
 starttime = cs21s
 endtime = cs21e
-basepath = 'preprocessed data/ci/cs21nomask.csv'
-targetpath = 'preprocessed data/ci/cs21mi.csv'
+basepath = 'result/ci/cs21nomask.csv'
+targetpath = 'result/ci/cs21mi.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -617,8 +617,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'England: future Inbound mobility'
 starttime = uk21s
 endtime = uk21e
-basepath = 'preprocessed data/ci/uk21nomask.csv'
-targetpath = 'preprocessed data/ci/uk21mi.csv'
+basepath = 'result/ci/uk21nomask.csv'
+targetpath = 'result/ci/uk21mi.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -629,8 +629,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'U.S.: future Inbound mobility'
 starttime = usa21s
 endtime = usa21e
-basepath = 'preprocessed data/ci/usa21nomask.csv'
-targetpath = 'preprocessed data/ci/usa21mi.csv'
+basepath = 'result/ci/usa21nomask.csv'
+targetpath = 'result/ci/usa21mi.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -642,8 +642,8 @@ print('calculating future Domestic mobility')
 name = 'Northern China: future Domestic mobility'
 starttime = cn21s
 endtime = cn21e
-basepath = 'preprocessed data/ci/cn21nomask.csv'
-targetpath = 'preprocessed data/ci/cn21mv.csv'
+basepath = 'result/ci/cn21nomask.csv'
+targetpath = 'result/ci/cn21mv.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -654,8 +654,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Southern China: future Domestic mobility'
 starttime = cs21s
 endtime = cs21e
-basepath = 'preprocessed data/ci/cs21nomask.csv'
-targetpath = 'preprocessed data/ci/cs21mv.csv'
+basepath = 'result/ci/cs21nomask.csv'
+targetpath = 'result/ci/cs21mv.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -666,8 +666,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'England: future Domestic mobility'
 starttime = uk21s
 endtime = uk21e
-basepath = 'preprocessed data/ci/uk21nomask.csv'
-targetpath = 'preprocessed data/ci/uk21mv.csv'
+basepath = 'result/ci/uk21nomask.csv'
+targetpath = 'result/ci/uk21mv.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -678,8 +678,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'U.S.: future Domestic mobility'
 starttime = usa21s
 endtime = usa21e
-basepath = 'preprocessed data/ci/usa21nomask.csv'
-targetpath = 'preprocessed data/ci/usa21mv.csv'
+basepath = 'result/ci/usa21nomask.csv'
+targetpath = 'result/ci/usa21mv.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -692,7 +692,7 @@ print('calculating tau')
 name = 'Northern China: tau'
 starttime = 0
 endtime = 0
-basepath = 'preprocessed data/ci/cntau.csv'
+basepath = 'result/ci/cntau.csv'
 targetpath = ''
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
@@ -708,7 +708,7 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Southern China: tau'
 starttime = 0
 endtime = 0
-basepath = 'preprocessed data/ci/cstau.csv'
+basepath = 'result/ci/cstau.csv'
 targetpath = ''
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
@@ -724,7 +724,7 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'England: tau'
 starttime = 0
 endtime = 0
-basepath = 'preprocessed data/ci/uktau.csv'
+basepath = 'result/ci/uktau.csv'
 targetpath = ''
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
@@ -740,7 +740,7 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'U.S.: tau'
 starttime = 0
 endtime = 0
-basepath = 'preprocessed data/ci/usatau.csv'
+basepath = 'result/ci/usatau.csv'
 targetpath = ''
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
@@ -757,7 +757,7 @@ print('calculating intercept')
 name = 'Northern China: intercept'
 starttime = 0
 endtime = 0
-basepath = 'preprocessed data/ci/cntau.csv'
+basepath = 'result/ci/cntau.csv'
 targetpath = ''
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
@@ -773,7 +773,7 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Southern China: intercept'
 starttime = 0
 endtime = 0
-basepath = 'preprocessed data/ci/cstau.csv'
+basepath = 'result/ci/cstau.csv'
 targetpath = ''
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
@@ -789,7 +789,7 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'England: intercept'
 starttime = 0
 endtime = 0
-basepath = 'preprocessed data/ci/uktau.csv'
+basepath = 'result/ci/uktau.csv'
 targetpath = ''
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
@@ -805,7 +805,7 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'U.S.: intercept'
 starttime = 0
 endtime = 0
-basepath = 'preprocessed data/ci/usatau.csv'
+basepath = 'result/ci/usatau.csv'
 targetpath = ''
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
@@ -823,7 +823,7 @@ print('Calculating International Volume')
 name = 'Northern China: international Volume'
 starttime = cn19s
 endtime = cn19e
-basepath = 'preprocessed data/colleterialeffects/cn'
+basepath = 'result/colleterialeffects/cn'
 targetpath = 'result/cncoef'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
@@ -835,7 +835,7 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Northern China: international Volume'
 starttime = cn20s
 endtime = cn20e
-basepath = 'preprocessed data/colleterialeffects/cn'
+basepath = 'result/colleterialeffects/cn'
 targetpath = 'result/cncoef'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
@@ -847,7 +847,7 @@ resultdf = resultdf.append(data, ignore_index=True)
 # name = 'Northern China: international Volume'
 # starttime = cn21s
 # endtime = cn21e
-# basepath = 'preprocessed data/colleterialeffects/cn'
+# basepath = 'result/colleterialeffects/cn'
 # targetpath = 'result/cncoef'
 # basetype = ''
 # mean, lower, upper,_ = calculateCI(
@@ -859,7 +859,7 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Southern China: international Volume'
 starttime = cs19s
 endtime = cs19e
-basepath = 'preprocessed data/colleterialeffects/cs'
+basepath = 'result/colleterialeffects/cs'
 targetpath = 'result/cscoef'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
@@ -871,7 +871,7 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Southern China: international Volume'
 starttime = cs20s
 endtime = cs20e
-basepath = 'preprocessed data/colleterialeffects/cs'
+basepath = 'result/colleterialeffects/cs'
 targetpath = 'result/cscoef'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
@@ -883,7 +883,7 @@ resultdf = resultdf.append(data, ignore_index=True)
 # name = 'Southern China: international Volume'
 # starttime = cs21s
 # endtime = cs21e
-# basepath = 'preprocessed data/colleterialeffects/cs'
+# basepath = 'result/colleterialeffects/cs'
 # targetpath = 'result/cscoef'
 # basetype = ''
 # mean, lower, upper,_ = calculateCI(
@@ -895,7 +895,7 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'England: international Volume'
 starttime = uk19s
 endtime = uk19e
-basepath = 'preprocessed data/colleterialeffects/uk'
+basepath = 'result/colleterialeffects/uk'
 targetpath = 'result/ukcoef'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
@@ -907,7 +907,7 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'England: international Volume'
 starttime = uk20s
 endtime = uk20e
-basepath = 'preprocessed data/colleterialeffects/uk'
+basepath = 'result/colleterialeffects/uk'
 targetpath = 'result/ukcoef'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
@@ -919,7 +919,7 @@ resultdf = resultdf.append(data, ignore_index=True)
 # name = 'England: international Volume'
 # starttime = uk21s
 # endtime = uk21e
-# basepath = 'preprocessed data/colleterialeffects/uk'
+# basepath = 'result/colleterialeffects/uk'
 # targetpath = 'result/ukcoef'
 # basetype = ''
 # mean, lower, upper,_ = calculateCI(
@@ -931,7 +931,7 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'U.S.: international Volume'
 starttime = usa19s
 endtime = usa19e
-basepath = 'preprocessed data/colleterialeffects/usa'
+basepath = 'result/colleterialeffects/usa'
 targetpath = 'result/usacoef'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
@@ -943,7 +943,7 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'U.S.: international Volume'
 starttime = usa20s
 endtime = usa20e
-basepath = 'preprocessed data/colleterialeffects/usa'
+basepath = 'result/colleterialeffects/usa'
 targetpath = 'result/usacoef'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
@@ -955,7 +955,7 @@ resultdf = resultdf.append(data, ignore_index=True)
 # name = 'U.S.: international Volume'
 # starttime = usa21s
 # endtime = usa21e
-# basepath = 'preprocessed data/colleterialeffects/usa'
+# basepath = 'result/colleterialeffects/usa'
 # targetpath = 'result/usacoef'
 # basetype = ''
 # mean, lower, upper,_ = calculateCI(
@@ -968,8 +968,8 @@ print('Calculating int/dom volume alone')
 name = 'Northern China: int mobility change alone - no npi'
 starttime = cn20s
 endtime = cn20e
-basepath = 'preprocessed data/ci/cnnonpi.csv'
-targetpath = 'preprocessed data/ci/cnd2i1.csv'
+basepath = 'result/ci/cnnonpi.csv'
+targetpath = 'result/ci/cnd2i1.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -980,8 +980,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Northern China: dom mobility change alone - no npi'
 starttime = cn20s
 endtime = cn20e
-basepath = 'preprocessed data/ci/cnnonpi.csv'
-targetpath = 'preprocessed data/ci/cnd1i2.csv'
+basepath = 'result/ci/cnnonpi.csv'
+targetpath = 'result/ci/cnd1i2.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -992,8 +992,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Southern China: int mobility change alone - no npi'
 starttime = cs20s
 endtime = cs20e
-basepath = 'preprocessed data/ci/csnonpi.csv'
-targetpath = 'preprocessed data/ci/csd2i1.csv'
+basepath = 'result/ci/csnonpi.csv'
+targetpath = 'result/ci/csd2i1.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -1004,8 +1004,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Southern China: dom mobility change alone - no npi'
 starttime = cs20s
 endtime = cs20e
-basepath = 'preprocessed data/ci/csnonpi.csv'
-targetpath = 'preprocessed data/ci/csd1i2.csv'
+basepath = 'result/ci/csnonpi.csv'
+targetpath = 'result/ci/csd1i2.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -1016,8 +1016,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'England: int mobility change alone - no npi'
 starttime = uk20s
 endtime = uk20e
-basepath = 'preprocessed data/ci/uknonpi.csv'
-targetpath = 'preprocessed data/ci/ukd2i1.csv'
+basepath = 'result/ci/uknonpi.csv'
+targetpath = 'result/ci/ukd2i1.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -1028,8 +1028,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'England: dom mobility change alone - no npi'
 starttime = uk20s
 endtime = uk20e
-basepath = 'preprocessed data/ci/uknonpi.csv'
-targetpath = 'preprocessed data/ci/ukd1i2.csv'
+basepath = 'result/ci/uknonpi.csv'
+targetpath = 'result/ci/ukd1i2.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -1040,8 +1040,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'U.S.: int mobility change alone - no npi'
 starttime = usa20s
 endtime = usa20e
-basepath = 'preprocessed data/ci/usanonpi.csv'
-targetpath = 'preprocessed data/ci/usad2i1.csv'
+basepath = 'result/ci/usanonpi.csv'
+targetpath = 'result/ci/usad2i1.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -1052,8 +1052,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'U.S.: dom mobility change alone - no npi'
 starttime = usa20s
 endtime = usa20e
-basepath = 'preprocessed data/ci/usanonpi.csv'
-targetpath = 'preprocessed data/ci/usad1i2.csv'
+basepath = 'result/ci/usanonpi.csv'
+targetpath = 'result/ci/usad1i2.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -1064,8 +1064,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Northern China: int mobility change alone - no npi'
 starttime = cn19s
 endtime = cn19e
-basepath = 'preprocessed data/ci/cnnonpi.csv'
-targetpath = 'preprocessed data/ci/cnd2i1.csv'
+basepath = 'result/ci/cnnonpi.csv'
+targetpath = 'result/ci/cnd2i1.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -1076,8 +1076,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Northern China: dom mobility change alone - no npi'
 starttime = cn19s
 endtime = cn19e
-basepath = 'preprocessed data/ci/cnnonpi.csv'
-targetpath = 'preprocessed data/ci/cnd1i2.csv'
+basepath = 'result/ci/cnnonpi.csv'
+targetpath = 'result/ci/cnd1i2.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -1088,8 +1088,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Southern China: int mobility change alone - no npi'
 starttime = cs19s
 endtime = cs19e
-basepath = 'preprocessed data/ci/csnonpi.csv'
-targetpath = 'preprocessed data/ci/csd2i1.csv'
+basepath = 'result/ci/csnonpi.csv'
+targetpath = 'result/ci/csd2i1.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -1100,8 +1100,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Southern China: dom mobility change alone - no npi'
 starttime = cs19s
 endtime = cs19e
-basepath = 'preprocessed data/ci/csnonpi.csv'
-targetpath = 'preprocessed data/ci/csd1i2.csv'
+basepath = 'result/ci/csnonpi.csv'
+targetpath = 'result/ci/csd1i2.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -1112,8 +1112,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'England: int mobility change alone - no npi'
 starttime = uk19s
 endtime = uk19e
-basepath = 'preprocessed data/ci/uknonpi.csv'
-targetpath = 'preprocessed data/ci/ukd2i1.csv'
+basepath = 'result/ci/uknonpi.csv'
+targetpath = 'result/ci/ukd2i1.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -1124,8 +1124,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'England: dom mobility change alone - no npi'
 starttime = uk19s
 endtime = uk19e
-basepath = 'preprocessed data/ci/uknonpi.csv'
-targetpath = 'preprocessed data/ci/ukd1i2.csv'
+basepath = 'result/ci/uknonpi.csv'
+targetpath = 'result/ci/ukd1i2.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -1136,8 +1136,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'U.S.: int mobility change alone - no npi'
 starttime = usa19s
 endtime = usa19e
-basepath = 'preprocessed data/ci/usanonpi.csv'
-targetpath = 'preprocessed data/ci/usad2i1.csv'
+basepath = 'result/ci/usanonpi.csv'
+targetpath = 'result/ci/usad2i1.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -1148,8 +1148,8 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'U.S.: dom mobility change alone - no npi'
 starttime = usa19s
 endtime = usa19e
-basepath = 'preprocessed data/ci/usanonpi.csv'
-targetpath = 'preprocessed data/ci/usad1i2.csv'
+basepath = 'result/ci/usanonpi.csv'
+targetpath = 'result/ci/usad1i2.csv'
 basetype = ''
 mean, lower, upper, _, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime)
@@ -1162,16 +1162,16 @@ print('Calculating int/all percentage')
 name = 'Northern China: int/all percentage'
 starttime = cn19s
 endtime = cn19e
-basepath = 'preprocessed data/ci/cnnonpi.csv'
-targetpath = 'preprocessed data/ci/cnd2i1.csv'
+basepath = 'result/ci/cnnonpi.csv'
+targetpath = 'result/ci/cnd2i1.csv'
 basetype = ''
 mean, lower, upper, ichange, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime, bs=False)
 
 starttime = cn19s
 endtime = cn19e
-basepath = 'preprocessed data/ci/cnnonpi.csv'
-targetpath = 'preprocessed data/ci/cnmobility.csv'
+basepath = 'result/ci/cnnonpi.csv'
+targetpath = 'result/ci/cnmobility.csv'
 basetype = ''
 mean, lower, upper, achange, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime, bs=False)
@@ -1189,16 +1189,16 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Northern China: int/all percentage'
 starttime = cn20s
 endtime = cn20e
-basepath = 'preprocessed data/ci/cnnonpi.csv'
-targetpath = 'preprocessed data/ci/cnd2i1.csv'
+basepath = 'result/ci/cnnonpi.csv'
+targetpath = 'result/ci/cnd2i1.csv'
 basetype = ''
 mean, lower, upper, ichange, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime, bs=False)
 
 starttime = cn20s
 endtime = cn20e
-basepath = 'preprocessed data/ci/cnnonpi.csv'
-targetpath = 'preprocessed data/ci/cnmobility.csv'
+basepath = 'result/ci/cnnonpi.csv'
+targetpath = 'result/ci/cnmobility.csv'
 basetype = ''
 mean, lower, upper, achange, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime, bs=False)
@@ -1216,16 +1216,16 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Southern China: int/all percentage'
 starttime = cs19s
 endtime = cs19e
-basepath = 'preprocessed data/ci/csnonpi.csv'
-targetpath = 'preprocessed data/ci/csd2i1.csv'
+basepath = 'result/ci/csnonpi.csv'
+targetpath = 'result/ci/csd2i1.csv'
 basetype = ''
 mean, lower, upper, ichange, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime, bs=False)
 
 starttime = cs19s
 endtime = cs19e
-basepath = 'preprocessed data/ci/csnonpi.csv'
-targetpath = 'preprocessed data/ci/csmobility.csv'
+basepath = 'result/ci/csnonpi.csv'
+targetpath = 'result/ci/csmobility.csv'
 basetype = ''
 mean, lower, upper, achange, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime, bs=False)
@@ -1243,16 +1243,16 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'Southern China: int/all percentage'
 starttime = cs20s
 endtime = cs20e
-basepath = 'preprocessed data/ci/csnonpi.csv'
-targetpath = 'preprocessed data/ci/csd2i1.csv'
+basepath = 'result/ci/csnonpi.csv'
+targetpath = 'result/ci/csd2i1.csv'
 basetype = ''
 mean, lower, upper, ichange, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime, bs=False)
 
 starttime = cs20s
 endtime = cs20e
-basepath = 'preprocessed data/ci/csnonpi.csv'
-targetpath = 'preprocessed data/ci/csmobility.csv'
+basepath = 'result/ci/csnonpi.csv'
+targetpath = 'result/ci/csmobility.csv'
 basetype = ''
 mean, lower, upper, achange, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime, bs=False)
@@ -1270,16 +1270,16 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'England: int/all percentage'
 starttime = uk19s
 endtime = uk19e
-basepath = 'preprocessed data/ci/uknonpi.csv'
-targetpath = 'preprocessed data/ci/ukd2i1.csv'
+basepath = 'result/ci/uknonpi.csv'
+targetpath = 'result/ci/ukd2i1.csv'
 basetype = ''
 mean, lower, upper, ichange, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime, bs=False)
 
 starttime = uk19s
 endtime = uk19e
-basepath = 'preprocessed data/ci/uknonpi.csv'
-targetpath = 'preprocessed data/ci/ukmobility.csv'
+basepath = 'result/ci/uknonpi.csv'
+targetpath = 'result/ci/ukmobility.csv'
 basetype = ''
 mean, lower, upper, achange, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime, bs=False)
@@ -1297,16 +1297,16 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'England: int/all percentage'
 starttime = uk20s
 endtime = uk20e
-basepath = 'preprocessed data/ci/uknonpi.csv'
-targetpath = 'preprocessed data/ci/ukd2i1.csv'
+basepath = 'result/ci/uknonpi.csv'
+targetpath = 'result/ci/ukd2i1.csv'
 basetype = ''
 mean, lower, upper, ichange, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime, bs=False)
 
 starttime = uk20s
 endtime = uk20e
-basepath = 'preprocessed data/ci/uknonpi.csv'
-targetpath = 'preprocessed data/ci/ukmobility.csv'
+basepath = 'result/ci/uknonpi.csv'
+targetpath = 'result/ci/ukmobility.csv'
 basetype = ''
 mean, lower, upper, achange, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime, bs=False)
@@ -1324,16 +1324,16 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'U.S.: int/all percentage'
 starttime = usa19s
 endtime = usa19e
-basepath = 'preprocessed data/ci/usanonpi.csv'
-targetpath = 'preprocessed data/ci/usad2i1.csv'
+basepath = 'result/ci/usanonpi.csv'
+targetpath = 'result/ci/usad2i1.csv'
 basetype = ''
 mean, lower, upper, ichange, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime, bs=False)
 
 starttime = usa19s
 endtime = usa19e
-basepath = 'preprocessed data/ci/usanonpi.csv'
-targetpath = 'preprocessed data/ci/usamobility.csv'
+basepath = 'result/ci/usanonpi.csv'
+targetpath = 'result/ci/usamobility.csv'
 basetype = ''
 mean, lower, upper, achange, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime, bs=False)
@@ -1351,16 +1351,16 @@ resultdf = resultdf.append(data, ignore_index=True)
 name = 'U.S.: int/all percentage'
 starttime = usa20s
 endtime = usa20e
-basepath = 'preprocessed data/ci/usanonpi.csv'
-targetpath = 'preprocessed data/ci/usad2i1.csv'
+basepath = 'result/ci/usanonpi.csv'
+targetpath = 'result/ci/usad2i1.csv'
 basetype = ''
 mean, lower, upper, ichange, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime, bs=False)
 
 starttime = usa20s
 endtime = usa20e
-basepath = 'preprocessed data/ci/usanonpi.csv'
-targetpath = 'preprocessed data/ci/usamobility.csv'
+basepath = 'result/ci/usanonpi.csv'
+targetpath = 'result/ci/usamobility.csv'
 basetype = ''
 mean, lower, upper, achange, median = calculateCI(
     basepath, targetpath, basetype, starttime, endtime, bs=False)

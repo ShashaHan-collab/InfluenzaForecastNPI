@@ -37,7 +37,7 @@ python script/estimation_forecast.py --lag 52 --region cslog --tstart 202004 --t
 python script/calculate_plot_statistics.py --lag 52 --region cslog --tstart 202004 --tend 202128 --pstart 202129 --pend 202252 --ctype new --clag 11 --yam csihatynvmi --model lr --cpl a0 --noint --cpltp 202140 --targetname csnvmi
 python script/auxiliary_gen_excel_data.py --sourcecsv csnvmi --targetexcel result/future/cs --targetsheetname nvmi
 python script/auxiliary_name_file.py --lag 52 --region cslog --tstart 202004 --tend 202128 --pstart 202129 --pend 202252 --ctype new --clag 11 --yam csihatynvmi --model lr --cpl a0 --noint --cpltp 202140 --targetname cs21mi --targetfolder result/ci
-# uk
+# england
 # prepare data
 python script/estimation_forecast.py --lag 52 --region uknv3i --tstart 201140 --tend 202010 --pstart 202140 --pend 202252 --cov volume,vw --lsa 1e-05 --loadcoef ukcoef --loadpositiverate uk3hatym 
 python script/auxiliary_name_file.py --lag 52 --region uknv3i --tstart 201140 --tend 202010 --pstart 202140 --pend 202252 --cov volume,vw --lsa 1e-05 --targetname uk3hatynv3i

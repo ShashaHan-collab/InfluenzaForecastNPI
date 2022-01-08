@@ -13,10 +13,10 @@ from sklearn.linear_model import Lasso
 
 def load_data(lag, covariate_list, lag_list, direction, region, timepoint, uselog, treatmentindicator_list, causaltype, causallag, yam_region, volume_list, args, intervolume_list):
     inputdf = pd.read_csv(
-        'preprocessed data/'+region+'.csv', header=0, index_col=0)
+        'preprocessed_data/'+region+'.csv', header=0, index_col=0)
     if yam_region != '':
         yamdf = pd.read_csv(
-            'preprocessed data/'+yam_region+'.csv', header=0, index_col=0)
+            'preprocessed_data/'+yam_region+'.csv', header=0, index_col=0)
         inputdf = inputdf.loc[yamdf.index, :]
     else:
         yamdf = None

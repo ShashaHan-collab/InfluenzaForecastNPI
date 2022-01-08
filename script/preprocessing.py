@@ -28,7 +28,7 @@ def find_rate(raw: DataFrame, direction, idx):
     return rate
 
 basefolder = ''
-outputbasefolder='preprocessed data'
+outputbasefolder='preprocessed_data/'
 vaccinedf = pd.read_csv(basefolder+'raw_data/vaccine.csv', index_col=0, header=0)
 
 cnma = 30

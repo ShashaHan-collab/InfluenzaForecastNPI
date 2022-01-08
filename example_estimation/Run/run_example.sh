@@ -114,6 +114,9 @@ bash example_estimation/Run/maketau.sh
 python script/calculate_report_statistics.py
 
 # do model validation and prepare source data for Figure "Fitted influenza activity that is obtained from using the 2011-2016 data for training and the 2017 data for test, in comparison to observed influenza activity", "Fitted influenza activity that is obtained from using the 2011-2017 data for training and the 2018 data for test, in comparison to observed influenza activity" and "Fitted influenza activity that is obtained from using the 2011-2018 data for training and the 2019 data for test, in comparison to observed influenza activity"
+# dos2unix example_estimation/Run/validation.sh
 bash example_estimation/Run/validation.sh
+# dos2unix example_estimation/Run/validation17.sh
 bash example_estimation/Run/validation17.sh
+# dos2unix example_estimation/Run/validation18.sh
 bash example_estimation/Run/validation18.sh

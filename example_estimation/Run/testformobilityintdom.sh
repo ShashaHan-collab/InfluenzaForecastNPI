@@ -31,7 +31,7 @@ python script/estimation_forecast.py --lag 52 --region usad2i1 --tstart 201140 -
 python script/auxiliary_name_file.py --lag 52 --region usad2i1 --tstart 201140 --tend 202011 --pstart 202012 --pend 202139 --cov volume,vw --lsa 1e-05 --targetname usad2i1 --targetfolder result/ci
 python script/calculate_plot_statistics.py --lag 52 --region usad2i1 --tstart 201140 --tend 202011 --pstart 202012 --pend 202139 --cov volume,vw --lsa 1e-05 --targetname usad2i1
 python script/auxiliary_gen_excel_data.py --sourcecsv usad2i1 --targetexcel result/colleterialeffects/usa --targetsheetname d2i1
-#uk
+# england
 # flu level with mitigate domestic travel volume and normal international travel volume
 python script/estimation_forecast.py --lag 52 --region ukd1i2 --tstart 201140 --tend 202010 --pstart 202011 --pend 202139 --cov volume,vw --lsa 1e-05 --loadcoef ukcoef
 python script/auxiliary_name_file.py --lag 52 --region ukd1i2 --tstart 201140 --tend 202010 --pstart 202011 --pend 202139 --cov volume,vw --lsa 1e-05 --targetname ukd1i2 --targetfolder result/ci

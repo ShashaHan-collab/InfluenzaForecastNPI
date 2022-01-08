@@ -10,7 +10,7 @@ python script/estimation_forecast.py --lag 52 --region cslog --tstart 202004 --t
 python script/auxiliary_name_file.py --lag 52 --region cslog --tstart 202004 --tend 202128 --pstart 202128 --pend 202252 --ctype new --clag 11 --yam csihatyfmsn --model lr --cpl a0 --noint --cpltp 202140 --targetname cs21nomask --targetfolder result/ci
 python script/calculate_plot_statistics.py --lag 52 --region cslog --tstart 202004 --tend 202128 --pstart 202128 --pend 202252 --ctype new --clag 11 --yam csihatyfmsn --model lr --cpl a0 --noint --cpltp 202140 --targetname cs21nomask
 python script/auxiliary_gen_excel_data.py --sourcecsv cs21nomask --targetexcel result/future/cs --targetsheetname no
-# uk
+# england
 # no
 python script/estimation_forecast.py --lag 52 --region uklog --tstart 202030 --tend 202128 --pstart 202128 --pend 202252 --ctype new --clag 24 --yam uk3hatyfmsn --model lr --cpl a0 --noint --cpltp 202140  --loadcoef ukcoefmask
 python script/auxiliary_name_file.py --lag 52 --region uklog --tstart 202030 --tend 202128 --pstart 202128 --pend 202252 --ctype new --clag 24 --yam uk3hatyfmsn --model lr --cpl a0 --noint --cpltp 202140 --targetname uk21nomask --targetfolder result/ci

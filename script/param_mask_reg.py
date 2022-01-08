@@ -38,17 +38,17 @@ def main():
     deltas = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
     thetas = [0, 0.01, 0.05, 0.1, 0.5]
     # Input the data on daily administrated doses of vaccines  
-    vaccinedf = pd.read_csv('preprocessed data/vaccine.csv', index_col=0, header=0)
+    vaccinedf = pd.read_csv('preprocessed_data/vaccine.csv', index_col=0, header=0)
     vaccine_data = vaccinedf.loc[vaccinestart:end, paras['vaccine']].values
 
     for theta in thetas:
         for delta in deltas:
             # Input the data on mask index 
             ymaskdf = pd.read_csv(
-                'preprocessed data/'+paras['ymask']+'.csv', header=0, index_col=0)
+                'preprocessed_data/'+paras['ymask']+'.csv', header=0, index_col=0)
             # Input the estimated percent posivities in scenarios with mobitlity-reated NPIs only[CORRECT?]
             hatydf = pd.read_csv(
-                'preprocessed data/'+paras['haty']+'.csv', header=0, index_col=0)
+                'preprocessed_data/'+paras['haty']+'.csv', header=0, index_col=0)
             # Choose the model for esimating mask-wearing interventions 
             if paras['model'] == 1:
                 vaccine_cpl = np.maximum(1-theta*vaccine_data, 0.5)-delta
