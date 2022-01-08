@@ -1,4 +1,4 @@
-# Called by the bash script. Read the mean and upper/lower bound line calculated by calavgpercent.py and merge them to a excel files that can be lated used as source data for plotting.
+# Called by the bash script. Read the mean and upper/lower bound line calculated by calculate_plot_statistics.py and merge them to a excel files that can be lated used as source data for plotting.
 import pandas as pd
 from utils import *
 import numpy as np

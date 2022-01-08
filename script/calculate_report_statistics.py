@@ -1,4 +1,4 @@
-# Called by the bash script. This script cauculates the mean and confidence interval for the effects we are interested in. Data used for calculation are first predicted by imputation_reglike.py, and later moved to "preprocessed data/ci" folder by name_data.py.
+# Called by the bash script. This script cauculates the mean and confidence interval for the effects we are interested in. Data used for calculation are first predicted by estimation_forecast.py, and later moved to "preprocessed data/ci" folder by auxiliary_name_file.py.
 import pandas as pd
 import numpy as np
 
