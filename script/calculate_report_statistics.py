@@ -1,8 +1,10 @@
-# Called by the bash script. This script cauculates the mean and confidence interval for the effects we are interested in. Data used for calculation are first predicted by estimation_forecast.py, and later moved to "preprocessed data/ci" folder by auxiliary_name_file.py.
+# Called by the bash script. This script cauculates the mean and confidence intervals. 
+
 import pandas as pd
 import numpy as np
 
-# Takes in the parameters that representing the CI we are interested in, read the corresponding predicted values and calculates and returns the CI. The meaning for parameters are as follow
+# Takes in the parameters that representing the CI we are interested in, read the corresponding predicted values and calculates and returns the CI. 
+# The meaning for parameters are as follow
 # name = The type of CI we want to calculate
 # starttime = Starting time of the time interval that we calculate CI
 # endtime = Ending time of the time interval that we calculate CI
