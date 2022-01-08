@@ -1493,7 +1493,7 @@ idx = indicator[(indicator['week'] >= seasonstart) |
                 (indicator['week'] <= seasonend)].index
 indicator.loc[idx, 'indicator'] = 1
 # output files
-# uk
+# uk.csv
 out = pr_raw.loc[201101:202252, ['year', 'week', 'positive_rate']].copy()
 out['t2'] = 0
 out.loc[202030:, 't2'] = 1
@@ -1502,7 +1502,7 @@ out.loc[:, 'volume'] = domestic_mitigate_weekly.loc[out.index, 'domestic'].value
 out.loc[:, 'vw'] = international_mitigate_weekly.loc[out.index,
                                                      'international'].values*(indicator['indicator'].values if use_indicator_international else 1)
 out.to_csv(outputbasefolder+'uk.csv', header=True, index=True)
-# ukv2
+# ukv2.csv
 out = pr_raw.loc[201101:202252, ['year', 'week', 'positive_rate']].copy()
 out['t2'] = 0
 out.loc[202030:, 't2'] = 1
@@ -1511,7 +1511,7 @@ out.loc[:, 'volume'] = domestic_normal_weekly.loc[out.index, 'domestic'].values 
 out.loc[:, 'vw'] = international_normal_weekly.loc[out.index,
                                                    'international'].values*(indicator['indicator'].values if use_indicator_international else 1)
 out.to_csv(outputbasefolder+'ukv2.csv', header=True, index=True)
-# uk3vni
+# uk3vni.csv
 out = pr_raw.loc[201101:202252, ['year', 'week', 'positive_rate']].copy()
 out['indicator'] = 1
 out['t2'] = 0
@@ -1525,7 +1525,7 @@ out['indicator'] = 0
 out.loc[:, 'vw'] = international_normal_weekly.loc[out.index,
                                                    'international'].values*(indicator['indicator'].values if use_indicator_international else 1)
 out.to_csv(outputbasefolder+'uk3vni.csv', header=True, index=True)
-# ukmvni
+# ukmvni.csv
 out = pr_raw.loc[201101:202252, ['year', 'week', 'positive_rate']].copy()
 out['indicator'] = 1
 out['t2'] = 0
@@ -1539,7 +1539,7 @@ out['indicator'] = 0
 out.loc[:, 'vw'] = international_normal_weekly.loc[out.index,
                                                    'international'].values*(indicator['indicator'].values if use_indicator_international else 1)
 out.to_csv(outputbasefolder+'ukmvni.csv', header=True, index=True)
-# uk7vni
+# uk7vni.csv
 out = pr_raw.loc[201101:202252, ['year', 'week', 'positive_rate']].copy()
 out['indicator'] = 1
 out['t2'] = 0
@@ -1553,7 +1553,7 @@ out['indicator'] = 0
 out.loc[:, 'vw'] = international_normal_weekly.loc[out.index,
                                                    'international'].values*(indicator['indicator'].values if use_indicator_international else 1)
 out.to_csv(outputbasefolder+'uk7vni.csv', header=True, index=True)
-# uknv3i
+# uknv3i.csv
 out = pr_raw.loc[201101:202252, ['year', 'week', 'positive_rate']].copy()
 out['indicator'] = 1
 out['t2'] = 0
@@ -1566,7 +1566,7 @@ out.loc[:, 'volume'] = domestic_normal_weekly.loc[out.index,
 out.loc[:, 'vw'] = international_normal_weekly.loc[out.index,
                                                    'international'].values*out.loc[:, 'indicator'].values*(indicator['indicator'].values if use_indicator_international else 1)
 out.to_csv(outputbasefolder+'uknv3i.csv', header=True, index=True)
-# uknvmi
+# uknvmi.csv
 out = pr_raw.loc[201101:202252, ['year', 'week', 'positive_rate']].copy()
 out['indicator'] = 1
 out['t2'] = 0
@@ -1579,7 +1579,7 @@ out.loc[:, 'volume'] = domestic_normal_weekly.loc[out.index,
 out.loc[:, 'vw'] = international_normal_weekly.loc[out.index,
                                                    'international'].values*out.loc[:, 'indicator'].values*(indicator['indicator'].values if use_indicator_international else 1)
 out.to_csv(outputbasefolder+'uknvmi.csv', header=True, index=True)
-# uknv7i
+# uknv7i.csv
 out = pr_raw.loc[201101:202252, ['year', 'week', 'positive_rate']].copy()
 out['indicator'] = 1
 out['t2'] = 0
@@ -1592,7 +1592,7 @@ out.loc[:, 'volume'] = domestic_normal_weekly.loc[out.index,
 out.loc[:, 'vw'] = international_normal_weekly.loc[out.index,
                                                    'international'].values*out.loc[:, 'indicator'].values*(indicator['indicator'].values if use_indicator_international else 1)
 out.to_csv(outputbasefolder+'uknv7i.csv', header=True, index=True)
-# ukd1i2
+# ukd1i2.csv
 out = pr_raw.loc[201101:202252, ['year', 'week', 'positive_rate']].copy()
 out['t2'] = 0
 out.loc[202030:, 't2'] = 1
@@ -1601,7 +1601,7 @@ out.loc[:, 'volume'] = domestic_mitigate_weekly.loc[out.index, 'domestic'].value
 out.loc[:, 'vw'] = international_normal_weekly.loc[out.index,
                                                    'international'].values*(indicator['indicator'].values if use_indicator_international else 1)
 out.to_csv(outputbasefolder+'ukd1i2.csv', header=True, index=True)
-# ukd2i1
+# ukd2i1.csv
 out = pr_raw.loc[201101:202252, ['year', 'week', 'positive_rate']].copy()
 out['t2'] = 0
 out.loc[202030:, 't2'] = 1
@@ -1610,7 +1610,7 @@ out.loc[:, 'volume'] = domestic_normal_weekly.loc[out.index, 'domestic'].values 
 out.loc[:, 'vw'] = international_mitigate_weekly.loc[out.index,
                                                      'international'].values*(indicator['indicator'].values if use_indicator_international else 1)
 out.to_csv(outputbasefolder+'ukd2i1.csv', header=True, index=True)
-# ukmvmi
+# ukmvmi.csv
 out = pr_raw.loc[201101:202252, ['year', 'week', 'positive_rate']].copy()
 out['indicator'] = 1
 out['t2'] = 0
@@ -1623,7 +1623,7 @@ out.loc[:, 'volume'] = domestic_normal_weekly.loc[out.index,
 out.loc[:, 'vw'] = international_normal_weekly.loc[out.index,
                                                    'international'].values*out.loc[:, 'indicator'].values * (indicator['indicator'].values if use_indicator_international else 1)
 out.to_csv(outputbasefolder+'ukmvmi.csv', header=True, index=True)
-# uklog
+# uklog.csv
 vaccinestart = 202050
 vaccineend = 202128
 out = pr_raw.loc[201101:202252, ['year', 'week', 'positive_rate']].copy()
