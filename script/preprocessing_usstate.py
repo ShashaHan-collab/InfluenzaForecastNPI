@@ -30,18 +30,18 @@ def find_rate(raw: DataFrame, direction, idx):
 basefolder = ''
 outputbasefolder='preprocessed data'
 vaccinedf = pd.read_csv(
-    basefolder+'raw data/vaccine.csv', index_col=0, header=0)
+    basefolder+'raw_data/vaccine.csv', index_col=0, header=0)
 for state in ['CO', 'IN', 'MN', 'WA']:
-    # read raw data
+    # read raw_data
     region = 'usa'
-    pr_raw = pd.read_csv(basefolder+'raw data/'+region +
+    pr_raw = pd.read_csv(basefolder+'raw_data/'+region +
                          '.csv', header=0, index_col=0)
     pr_raw['startdate'] = pd.to_datetime(pr_raw['startdate'])
     pr_raw['enddate'] = pd.to_datetime(pr_raw['enddate'])
     domestic_raw = pd.read_csv(basefolder +
-                               'raw data/'+region+'domestic.csv', header=0, index_col=0)
+                               'raw_data/'+region+'domestic.csv', header=0, index_col=0)
     international_raw = pd.read_csv(basefolder +
-                                    'raw data/'+region+'international.csv', header=0, index_col=0)
+                                    'raw_data/'+region+'international.csv', header=0, index_col=0)
 
     # domestic
     # calculate the regression coef per month
@@ -100,7 +100,7 @@ for state in ['CO', 'IN', 'MN', 'WA']:
                                                                      date.month]/date.days_in_month
 
     google = pd.read_csv(
-        basefolder+'raw data/Mobility_Report.csv', header=0, index_col=0)
+        basefolder+'raw_data/Mobility_Report.csv', header=0, index_col=0)
     google['date'] = pd.to_datetime(google['date'])
     base = pd.DataFrame(index=range(0, 7), columns=['basevalue'])
     mediandf = domestic_mitigate[(domestic_mitigate.index >= pd.to_datetime(
@@ -249,7 +249,7 @@ for state in ['CO', 'IN', 'MN', 'WA']:
 
     # fill state level positive rate
     staterate = pd.read_csv(
-        basefolder+'raw data/'+state+'.csv', header=0, index_col=0)
+        basefolder+'raw_data/'+state+'.csv', header=0, index_col=0)
     pr_raw.loc[201140:202252,
                'positive_rate'] = staterate.loc[201140:202252, 'positive_rate']
     if state == 'CO':

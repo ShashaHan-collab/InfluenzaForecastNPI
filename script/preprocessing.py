@@ -28,7 +28,7 @@ def find_rate(raw: DataFrame, direction, idx):
 
 basefolder = ''
 outputbasefolder='preprocessed data'
-vaccinedf = pd.read_csv(basefolder+'raw data/vaccine.csv', index_col=0, header=0)
+vaccinedf = pd.read_csv(basefolder+'raw_data/vaccine.csv', index_col=0, header=0)
 
 cnma = 30
 csma = 30
@@ -38,16 +38,16 @@ use_indicator_domestic = False
 use_indicator_international = True
 
 # Northern China
-# read raw data
+# read raw_data
 region = 'cn'
-pr_raw = pd.read_csv(basefolder+'raw data/'+region+'.csv', header=0, index_col=0)
+pr_raw = pd.read_csv(basefolder+'raw_data/'+region+'.csv', header=0, index_col=0)
 pr_raw['startdate'] = pd.to_datetime(pr_raw['startdate'])
 pr_raw['enddate'] = pd.to_datetime(pr_raw['enddate'])
 domestic_raw = pd.read_csv(basefolder+
-    'raw data/'+region+'domestic.csv', header=0, index_col=0)
+    'raw_data/'+region+'domestic.csv', header=0, index_col=0)
 domestic_raw.index = pd.to_datetime(domestic_raw.index)
 international_raw = pd.read_csv(basefolder+
-    'raw data/'+region+'international.csv', header=0, index_col=0)
+    'raw_data/'+region+'international.csv', header=0, index_col=0)
 
 # domestic
 # calculate the montly average
@@ -459,16 +459,16 @@ out.loc[202140:, 'cpl'] = 0
 out.to_csv(outputbasefolder+'cnlog.csv', header=True, index=True)
 
 # Southern China
-# read raw data
+# read raw_data
 region = 'cs'
-pr_raw = pd.read_csv(basefolder+'raw data/'+region+'.csv', header=0, index_col=0)
+pr_raw = pd.read_csv(basefolder+'raw_data/'+region+'.csv', header=0, index_col=0)
 pr_raw['startdate'] = pd.to_datetime(pr_raw['startdate'])
 pr_raw['enddate'] = pd.to_datetime(pr_raw['enddate'])
 domestic_raw = pd.read_csv(basefolder+
-    'raw data/'+region+'domestic.csv', header=0, index_col=0)
+    'raw_data/'+region+'domestic.csv', header=0, index_col=0)
 domestic_raw.index = pd.to_datetime(domestic_raw.index)
 international_raw = pd.read_csv(basefolder+
-    'raw data/'+region+'international.csv', header=0, index_col=0)
+    'raw_data/'+region+'international.csv', header=0, index_col=0)
 
 # domestic
 # calculate the montly average
@@ -872,15 +872,15 @@ out.loc[202140:, 'cpl'] = 0
 out.to_csv(outputbasefolder+'cslog.csv', header=True, index=True)
 
 # usa
-# read raw data
+# read raw_data
 region = 'usa'
-pr_raw = pd.read_csv(basefolder+'raw data/'+region+'.csv', header=0, index_col=0)
+pr_raw = pd.read_csv(basefolder+'raw_data/'+region+'.csv', header=0, index_col=0)
 pr_raw['startdate'] = pd.to_datetime(pr_raw['startdate'])
 pr_raw['enddate'] = pd.to_datetime(pr_raw['enddate'])
 domestic_raw = pd.read_csv(basefolder+
-    'raw data/'+region+'domestic.csv', header=0, index_col=0)
+    'raw_data/'+region+'domestic.csv', header=0, index_col=0)
 international_raw = pd.read_csv(basefolder+
-    'raw data/'+region+'international.csv', header=0, index_col=0)
+    'raw_data/'+region+'international.csv', header=0, index_col=0)
 
 # domestic
 # calculate the regression coef per month
@@ -1234,17 +1234,17 @@ out.loc[:, 'vw'] = international_normal_weekly.loc[out.index,
 out.to_csv(outputbasefolder+'usamvmi.csv', header=True, index=True)
 
 # england
-# read raw data
+# read raw_data
 region = 'uk'
-pr_raw = pd.read_csv(basefolder+'raw data/'+region+'.csv', header=0, index_col=0)
+pr_raw = pd.read_csv(basefolder+'raw_data/'+region+'.csv', header=0, index_col=0)
 pr_raw['startdate'] = pd.to_datetime(pr_raw['startdate'])
 pr_raw['enddate'] = pd.to_datetime(pr_raw['enddate'])
 domestic_raw = pd.read_csv(basefolder+
-    'raw data/'+region+'domestic.csv', header=0, index_col=0)
+    'raw_data/'+region+'domestic.csv', header=0, index_col=0)
 domestic_raw_0305 = pd.read_csv(basefolder+
-    'raw data/'+region+'domestic_0305.csv', header=0, index_col=0)
+    'raw_data/'+region+'domestic_0305.csv', header=0, index_col=0)
 international_raw = pd.read_csv(basefolder+
-    'raw data/'+region+'international.csv', header=0, index_col=0)
+    'raw_data/'+region+'international.csv', header=0, index_col=0)
 
 # domestic
 # calculate the regression coef per quarter
@@ -1637,13 +1637,13 @@ out.loc[202140:, 'cpl'] = 0
 out.to_csv(outputbasefolder+'uklog.csv', header=True, index=True)
 
 # Hubei Province
-# read raw data
+# read raw_data
 region = 'hb'
-pr_raw = pd.read_csv(basefolder+'raw data/'+region+'.csv', header=0, index_col=0)
+pr_raw = pd.read_csv(basefolder+'raw_data/'+region+'.csv', header=0, index_col=0)
 pr_raw['startdate'] = pd.to_datetime(pr_raw['startdate'])
 pr_raw['enddate'] = pd.to_datetime(pr_raw['enddate'])
 domestic_raw = pd.read_csv(basefolder+
-    'raw data/'+region+'domestic.csv', header=0, index_col=0)
+    'raw_data/'+region+'domestic.csv', header=0, index_col=0)
 domestic_raw.index = pd.to_datetime(domestic_raw.index)
 
 # domestic
