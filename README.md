@@ -1,5 +1,7 @@
 # InfluenzaForecastNPI
+
 Time-series Influenza Activity Forecast Model
+
 This model estimates the individuals effects of nonpharmaceutical interventions (mask-wearing intervention and mobility-related nonpharmaceutical interventions) as well as the effects of SARS-CoV2 interference, and forecast the influenza activity under varying scenarios, including the scenarios with different assumptions on nonpharmaceutical interventions. It was used in two recent papers: 
 
 Han, S., Zhang, T., Lyu, Y. et al. The Incoming Influenza Season — China, the United Kingdom, and the United States, 2021–2022. China CDC Weekly 3(39):10.39-1045. (2021). http://weekly.chinacdc.cn/en/article/doi/10.46234/ccdcw2021.253.
