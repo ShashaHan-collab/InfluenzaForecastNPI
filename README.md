@@ -27,14 +27,16 @@ This model first estimates the individual effects of NPIs. It consists of two se
 •	cowplot(R)
 
 •	scales(R)
-# Descriptions of the files
+
+# Descriptions of the files [Yan, pls note, the decsriptions inlcude ALL files and the folders that will be displayed under "main". If you think other structure is more appropriate. We need to discuss and reformulate the structure and rewirte the descriptions accordingly.]
+
 •	preprocessing.py Python script for the pre-processing operation. The script process with the raw data and generates the intermediate data.
 
-•	imputation_reglike.py: Python script for the main operation.[Is my interpretation here correct?] The script estimates the effect of one-week increase in NPIs and forecast seasonal influenza activities using the intermediate data generated from the pre-process. The script generates the XX with respect to the study regions. 
+•	imputation_reglike.py[TODO: change the name to "XX".py I did not understand the roles of the file, pls discuss with me on the name]: Python script for the main operation.[Is my interpretation here correct?] The script estimates the effect of one-week increase in NPIs and forecast seasonal influenza activities using the intermediate data generated from the pre-process. The script generates the XX with respect to the study regions. 
 
-•	calavgpercent.py: Python script to calculate mean, upper and lower bound of XXX[??I am not clear here]. 
+•	calavgpercent[TODO: change the name to "XX".py I did not understand the roles of the file, pls discuss with me on the name]]: Python script to calculate mean, upper and lower bound of XXX[??I am not clear here]. 
 
-•	calculateCI_v3.py: Python script to XXX.
+•	calculateCI_v3.py[TODO: change the name to calculate_statistics]: Python script to XXX.
 
 •	choosel_V2.py[TODO: change the name to param_mask_reg.py]: Python script to select the parameters for the second muliple regression model that are used to estimate the effect of a 1-week increase of mask-wearing interventions.
 
@@ -43,10 +45,14 @@ This model first estimates the individual effects of NPIs. It consists of two se
 
 •	movetoexcel.py[TODO: change the name to gen_data_plot.py]: Python script to generate data as csv format for plotting in R.
 
+•	Raw data: This folder contains the raw data.
+
+•	Proprecessed data: This folder contains the intermediate data after pre-processing. 
+
 
 •	Example estimation: The folder contains the input, intermediary and output data for an example of running the estimation model. The demo uses the data from the four regions we studied in the paper.
 
-•	Example forecast: The folder contains the input, intermediary and output data for an example of running the forecast model.The demo uses the data from the four regions we studied in the paper.
+•	Example forecast[Ideally, the two examples need to be separated. But you may combine the two if your time is tight]: The folder contains the input, intermediary and output data for an example of running the forecast model.The demo uses the data from the four regions we studied in the paper.
 
 •	Source data effect: The folder contains all the generated data for reproducing the figures in the paper : Han, S., Zhang, T., Lyu, Y. et al. Influenza’s plummeting during the COVID-19 pandemic: the roles of mask-wearing, mobility change, and SARS-CoV-2 interference. Engineering (2022). Forthcoming.
 
