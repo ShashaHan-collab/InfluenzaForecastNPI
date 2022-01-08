@@ -1,5 +1,5 @@
-# Called by the bash script. This script estimates parameters for the two regression models descirbed in our paper, and predict future flu activity. 
-# Here, output data contain parameters in regression models, and predicted percent positivity. 
+# Called by the bash script. This script estimates parameters for the two regression models descirbed in our paper, 
+# and predict future flu activity. Output data contain parameters in regression models and predicted percent positivity. 
 
 # Below are brief descriptions of abbrevations used.
 
