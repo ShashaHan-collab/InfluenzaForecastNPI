@@ -1,3 +1,4 @@
+# pre-process the raw data
 import numpy as np
 import pandas as pd
 from pandas.core.frame import DataFrame
@@ -38,7 +39,8 @@ use_indicator_domestic = False
 use_indicator_international = True
 
 # Northern China
-# read raw_data
+
+# input raw domestic mobility data
 region = 'cn'
 pr_raw = pd.read_csv(basefolder+'raw_data/'+region+'.csv', header=0, index_col=0)
 pr_raw['startdate'] = pd.to_datetime(pr_raw['startdate'])
@@ -49,8 +51,8 @@ domestic_raw.index = pd.to_datetime(domestic_raw.index)
 international_raw = pd.read_csv(basefolder+
     'raw_data/'+region+'international.csv', header=0, index_col=0)
 
-# domestic
-# calculate the montly average
+
+# daily mobility under the scenario without NPIs 
 average_d_mitigate = pd.DataFrame(index=[2019, 2020, 2021], columns=[
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
 average_d_normal = pd.DataFrame(index=[2019, 2020, 2021], columns=[
@@ -66,7 +68,7 @@ for year in [2019, 2020, 2021]:
 reg_coef = pd.DataFrame(index=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], columns=[
                         'intercept', 'coef'])
 
-# calculate the daily average regression coef per month
+# impute the missing moblity data under the senario without NPIs
 for month in range(3, 7):
     xtrain = np.array([2019, 2021]).reshape(-1, 1)
     ytrain = average_d_mitigate.loc[[2019, 2021], month].values
@@ -103,7 +105,7 @@ domestic_normal = pd.DataFrame(index=pd.date_range(
 domestic_mitigate = pd.DataFrame(index=pd.date_range(
     '2010-12-01', '2022-12-31'), columns=['volume', 'ma'])
 
-# normal daily raw
+# daily domestic mobility under the scenario without NPIs 
 domestic_normal.loc[pd.date_range('2019-01-01', '2021-07-15'),
                     'volume'] = domestic_raw.loc[pd.date_range('2019-01-01', '2021-07-15'), 'volume'].values
 for date in pd.date_range('2020-01-01', '2020-04-30'):
@@ -131,7 +133,8 @@ for date in domestic_normal.index:
         pos = domestic_normal.index.get_loc(date)
         domestic_normal.loc[date, 'volume'] = (
             domestic_normal.iloc[pos-1, 0]+domestic_normal.iloc[pos+1, 0])/2
-# mitigate daily raw
+
+# daily domestic mobility under the mobility-related NPIs
 domestic_mitigate.loc[pd.date_range('2019-01-01', '2021-07-15'),
                       'volume'] = domestic_raw.loc[pd.date_range('2019-01-01', '2021-07-15'), 'volume'].values
 for date in pd.date_range('2021-07-16', '2022-12-31'):
@@ -150,7 +153,7 @@ for date in domestic_mitigate.index:
         domestic_mitigate.loc[date, 'volume'] = (
             domestic_mitigate.iloc[pos-1, 0]+domestic_mitigate.iloc[pos+1, 0])/2
 
-# moving average
+# take moving average
 for date in pd.date_range('2011-01-01', '2022-12-31'):
     startdate = date-pd.DateOffset(days=cnma)
     domestic_normal.loc[date,
@@ -158,7 +161,7 @@ for date in pd.date_range('2011-01-01', '2022-12-31'):
     domestic_mitigate.loc[date,
                           'ma'] = domestic_mitigate.loc[startdate:date, 'volume'].mean()
 
-# weekly sum
+# aggregate to weekly levels
 domestic_normal_weekly = pr_raw.copy()
 domestic_mitigate_weekly = pr_raw.copy()
 for date in pr_raw.index:
@@ -168,7 +171,8 @@ for date in pr_raw.index:
                                'weeklyraw'] = domestic_normal.loc[start:end, 'ma'].sum()
     domestic_mitigate_weekly.loc[date,
                                  'weeklyraw'] = domestic_mitigate.loc[start:end, 'ma'].sum()
-# normalized by first month
+
+# normalize using the flu acitivity in the first month
 for date in pr_raw.index:
     if pr_raw.loc[date, 'year'] <= 2019:
         domestic_normal_weekly.loc[date,
@@ -184,7 +188,7 @@ for date in pr_raw.index:
             domestic_normal_weekly['startdate'].dt.year == startdate.year) & (domestic_normal_weekly['startdate'].dt.month == 1)][['weeklyraw']].mean()*domestic_normal_weekly[(
                 domestic_normal_weekly['startdate'].dt.year == 2019) & (domestic_normal_weekly['startdate'].dt.month == 1)][['weeklyraw']].mean()).values
 
-# normalize to positive rate level
+# renormalize to the same levele as the percent positivity
 domestic_normal_weekly.loc[:, 'domestic'] = domestic_normal_weekly.loc[:, 'domestic_raw'] / \
     domestic_normal_weekly[domestic_normal_weekly['year'] <= 2019][[
         'domestic_raw']].values.max()*domestic_normal_weekly.loc[:, 'positive_rate'].max()
@@ -192,11 +196,11 @@ domestic_mitigate_weekly.loc[:, 'domestic'] = domestic_mitigate_weekly.loc[:, 'd
     domestic_normal_weekly[domestic_normal_weekly['year'] <= 2019][[
         'domestic_raw']].values.max()*domestic_mitigate_weekly.loc[:, 'positive_rate'].max()
 
-# international
+# input raw international mobility data
 reg_coef = pd.DataFrame(index=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], columns=[
                         'intercept', 'coef'])
 
-# calculate the regression coef per month
+# impute the missing moblity data under the senario without NPIs
 for month in [1, 2, 5, 6, 7, 8, 9, 10, 11, 12]:
     xtrain = np.array([2019, 2018, 2017, 2016, 2015, 2014,
                       2013, 2012, 2011]).reshape(-1, 1)
@@ -220,7 +224,8 @@ international_raw.loc[201503, 'amount'] = get_prediction_from_reg(
     reg_coef, 3, 2015)[0]
 international_raw.loc[201504, 'amount'] = get_prediction_from_reg(
     reg_coef, 4, 2015)[0]
-# monthly raw
+
+# montly international mobility 
 month_i_mitigate = pd.DataFrame(index=range(2010, 2023), columns=[
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
 month_i_normal = pd.DataFrame(index=range(2010, 2023), columns=[
@@ -253,7 +258,7 @@ month_i_mitigate.loc[2010, 12] = get_prediction_from_reg(
     reg_coef, 12, 2010)
 
 
-# daily raw
+# transform into daily international mobility 
 international_normal = pd.DataFrame(index=pd.date_range(
     '2010-12-01', '2022-12-31'), columns=['volume', 'ma'])
 international_mitigate = pd.DataFrame(index=pd.date_range(
@@ -264,14 +269,14 @@ for date in international_normal.index:
     international_mitigate.loc[date, 'volume'] = month_i_mitigate.loc[date.year,
                                                                       date.month]/date.days_in_month
 
-# moving average
+# take moving average
 for date in pd.date_range('2011-01-01', '2022-12-31'):
     startdate = date-pd.DateOffset(days=cnma)
     international_normal.loc[date,
                              'ma'] = international_normal.loc[startdate:date, 'volume'].mean()
     international_mitigate.loc[date,
                                'ma'] = international_mitigate.loc[startdate:date, 'volume'].mean()
-# weekly sum
+# aggregate to weekly levels
 international_normal_weekly = pr_raw.copy()
 international_mitigate_weekly = pr_raw.copy()
 for date in pr_raw.index:
@@ -282,7 +287,7 @@ for date in pr_raw.index:
     international_mitigate_weekly.loc[date,
                                       'weeklyraw'] = international_mitigate.loc[start:end, 'ma'].sum().reshape(-1)
 
-# normalized by first month
+# normalize using the percent positivity in the first month
 for date in pr_raw.index:
     startdate = pr_raw.loc[date, 'startdate']
     international_normal_weekly.loc[date, 'international_raw'] = (international_normal_weekly.loc[date, 'weeklyraw']/international_normal_weekly[(
@@ -290,7 +295,7 @@ for date in pr_raw.index:
     international_mitigate_weekly.loc[date, 'international_raw'] = (international_mitigate_weekly.loc[date, 'weeklyraw']/international_normal_weekly[(
         international_normal_weekly['year'] == pr_raw.loc[date, 'year']) & (international_normal_weekly['startdate'].dt.month == 1)][['weeklyraw']].mean()).values
 
-# normalize to positive rate level
+# renormalize to the same level as the percent positive 
 international_normal_weekly.loc[:, 'international'] = international_normal_weekly.loc[:, 'international_raw'] / \
     international_normal_weekly[international_normal_weekly['year'] <= 2019][[
         'international_raw']].values.max()*international_normal_weekly.loc[:, 'positive_rate'].max()
@@ -305,7 +310,7 @@ indicator['indicator'] = 0
 idx = indicator[(indicator['week'] >= seasonstart) |
                 (indicator['week'] <= seasonend)].index
 indicator.loc[idx, 'indicator'] = 1
-# file output
+# output files
 # cni
 out = pr_raw.loc[201114:202252, ['year', 'week', 'positive_rate']].copy()
 out['t2'] = 0
@@ -315,6 +320,7 @@ out.loc[:, 'volume'] = domestic_mitigate_weekly.loc[out.index, 'domestic'].value
 out.loc[:, 'vw'] = international_mitigate_weekly.loc[out.index,
                                                      'international'].values * (indicator['indicator'].values if use_indicator_international else 1)
 out.to_csv(outputbasefolder+'cni.csv', header=True, index=True)
+
 # cniv2
 out = pr_raw.loc[201114:202252, ['year', 'week', 'positive_rate']].copy()
 out['t2'] = 0
@@ -324,6 +330,7 @@ out.loc[:, 'volume'] = domestic_normal_weekly.loc[out.index, 'domestic'].values 
 out.loc[:, 'vw'] = international_normal_weekly.loc[out.index,
                                                    'international'].values * (indicator['indicator'].values if use_indicator_international else 1)
 out.to_csv(outputbasefolder+'cniv2.csv', header=True, index=True)
+
 # cni3vni
 out = pr_raw.loc[201114:202252, ['year', 'week', 'positive_rate']].copy()
 out['indicator'] = 1
@@ -337,6 +344,7 @@ out.loc[:, 'volume'] = domestic_normal_weekly.loc[out.index,
 out.loc[:, 'vw'] = international_normal_weekly.loc[out.index,
                                                    'international'].values * (indicator['indicator'].values if use_indicator_international else 1)
 out.to_csv(outputbasefolder+'cni3vni.csv', header=True, index=True)
+
 # cnimvni
 out = pr_raw.loc[201114:202252, ['year', 'week', 'positive_rate']].copy()
 out['indicator'] = 1
@@ -350,6 +358,7 @@ out.loc[:, 'volume'] = domestic_normal_weekly.loc[out.index,
 out.loc[:, 'vw'] = international_normal_weekly.loc[out.index,
                                                    'international'].values * (indicator['indicator'].values if use_indicator_international else 1)
 out.to_csv(outputbasefolder+'cnimvni.csv', header=True, index=True)
+
 # cni7vni
 out = pr_raw.loc[201114:202252, ['year', 'week', 'positive_rate']].copy()
 out['indicator'] = 1
@@ -363,6 +372,7 @@ out.loc[:, 'volume'] = domestic_normal_weekly.loc[out.index,
 out.loc[:, 'vw'] = international_normal_weekly.loc[out.index,
                                                    'international'].values * (indicator['indicator'].values if use_indicator_international else 1)
 out.to_csv(outputbasefolder+'cni7vni.csv', header=True, index=True)
+
 # cninv3i
 out = pr_raw.loc[201114:202252, ['year', 'week', 'positive_rate']].copy()
 out['indicator'] = 1
@@ -376,6 +386,7 @@ out.loc[:, 'volume'] = domestic_normal_weekly.loc[out.index,
 out.loc[:, 'vw'] = international_normal_weekly.loc[out.index,
                                                    'international'].values*out.loc[:, 'indicator'].values * (indicator['indicator'].values if use_indicator_international else 1)
 out.to_csv(outputbasefolder+'cninv3i.csv', header=True, index=True)
+
 # cninvmi
 out = pr_raw.loc[201114:202252, ['year', 'week', 'positive_rate']].copy()
 out['indicator'] = 1
@@ -389,6 +400,7 @@ out.loc[:, 'volume'] = domestic_normal_weekly.loc[out.index,
 out.loc[:, 'vw'] = international_normal_weekly.loc[out.index,
                                                    'international'].values*out.loc[:, 'indicator'].values * (indicator['indicator'].values if use_indicator_international else 1)
 out.to_csv(outputbasefolder+'cninvmi.csv', header=True, index=True)
+
 # cninv7i
 out = pr_raw.loc[201114:202252, ['year', 'week', 'positive_rate']].copy()
 out['indicator'] = 1
@@ -402,6 +414,7 @@ out.loc[:, 'volume'] = domestic_normal_weekly.loc[out.index,
 out.loc[:, 'vw'] = international_normal_weekly.loc[out.index,
                                                    'international'].values*out.loc[:, 'indicator'].values * (indicator['indicator'].values if use_indicator_international else 1)
 out.to_csv(outputbasefolder+'cninv7i.csv', header=True, index=True)
+
 # cnd1i2
 out = pr_raw.loc[201114:202252, ['year', 'week', 'positive_rate']].copy()
 out['t2'] = 0
@@ -420,6 +433,7 @@ out.loc[:, 'volume'] = domestic_normal_weekly.loc[out.index, 'domestic'].values 
 out.loc[:, 'vw'] = international_mitigate_weekly.loc[out.index,
                                                      'international'].values * (indicator['indicator'].values if use_indicator_international else 1)
 out.to_csv(outputbasefolder+'cnd2i1.csv', header=True, index=True)
+
 # cnmvmi
 out = pr_raw.loc[201114:202252, ['year', 'week', 'positive_rate']].copy()
 out['indicator'] = 1
@@ -433,6 +447,7 @@ out.loc[:, 'volume'] = domestic_normal_weekly.loc[out.index,
 out.loc[:, 'vw'] = international_normal_weekly.loc[out.index,
                                                    'international'].values*out.loc[:, 'indicator'].values * (indicator['indicator'].values if use_indicator_international else 1)
 out.to_csv(outputbasefolder+'cnimvmi.csv', header=True, index=True)
+
 # cnlog
 vaccinestart = 202051
 vaccineend = 202128
