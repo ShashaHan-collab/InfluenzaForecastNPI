@@ -474,7 +474,7 @@ out.loc[202140:, 'cpl'] = 0
 out.to_csv(outputbasefolder+'cnlog.csv', header=True, index=True)
 
 # Southern China
-# read raw_data
+# input raw domestic mobility data
 region = 'cs'
 pr_raw = pd.read_csv(basefolder+'raw_data/'+region+'.csv', header=0, index_col=0)
 pr_raw['startdate'] = pd.to_datetime(pr_raw['startdate'])
@@ -486,7 +486,7 @@ international_raw = pd.read_csv(basefolder+
     'raw_data/'+region+'international.csv', header=0, index_col=0)
 
 # domestic
-# calculate the montly average
+# daily mobility under the scenario without NPIs 
 average_d_mitigate = pd.DataFrame(index=[2019, 2020, 2021], columns=[
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
 average_d_normal = pd.DataFrame(index=[2019, 2020, 2021], columns=[
@@ -502,7 +502,7 @@ for year in [2019, 2020, 2021]:
 reg_coef = pd.DataFrame(index=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], columns=[
                         'intercept', 'coef'])
 
-# calculate the daily average regression coef per month
+# impute the missing moblity data under the senario without NPIs
 for month in range(1, 7):
     xtrain = np.array([2019, 2021]).reshape(-1, 1)
     ytrain = average_d_mitigate.loc[[2019, 2021], month].values
@@ -535,7 +535,7 @@ domestic_normal = pd.DataFrame(index=pd.date_range(
 domestic_mitigate = pd.DataFrame(index=pd.date_range(
     '2010-12-01', '2022-12-31'), columns=['volume', 'ma'])
 
-# normal daily raw
+# daily domestic mobility under the scenario without NPIs 
 domestic_normal.loc[pd.date_range('2019-01-01', '2021-07-15'),
                     'volume'] = domestic_raw.loc[pd.date_range('2019-01-01', '2021-07-15'), 'volume'].values
 for date in pd.date_range('2020-01-01', '2020-04-30'):
@@ -559,7 +559,7 @@ for date in domestic_normal.index:
         domestic_normal.loc[date, 'volume'] = (
             domestic_normal.iloc[pos-1, 0]+domestic_normal.iloc[pos+1, 0])/2
 
-# mitigate daily raw
+# daily domestic mobility under the mobility-related NPIs
 domestic_mitigate.loc[pd.date_range('2019-01-01', '2021-07-15'),
                       'volume'] = domestic_raw.loc[pd.date_range('2019-01-01', '2021-07-15'), 'volume'].values
 for date in pd.date_range('2021-07-16', '2022-12-31'):
@@ -578,7 +578,7 @@ for date in domestic_mitigate.index:
         domestic_mitigate.loc[date, 'volume'] = (
             domestic_mitigate.iloc[pos-1, 0]+domestic_mitigate.iloc[pos+1, 0])/2
 
-# moving average
+# take moving average
 for date in pd.date_range('2011-01-01', '2022-12-31'):
     startdate = date-pd.DateOffset(days=csma)
     domestic_normal.loc[date,
@@ -586,7 +586,7 @@ for date in pd.date_range('2011-01-01', '2022-12-31'):
     domestic_mitigate.loc[date,
                           'ma'] = domestic_mitigate.loc[startdate:date, 'volume'].mean()
 
-# weekly sum
+# aggregate to weekly levels
 domestic_normal_weekly = pr_raw.copy()
 domestic_mitigate_weekly = pr_raw.copy()
 for date in pr_raw.index:
@@ -596,7 +596,7 @@ for date in pr_raw.index:
                                'weeklyraw'] = domestic_normal.loc[start:end, 'ma'].sum()
     domestic_mitigate_weekly.loc[date,
                                  'weeklyraw'] = domestic_mitigate.loc[start:end, 'ma'].sum()
-# normalized by first month
+# normalize using the flu acitivity in the first month
 for date in pr_raw.index:
     if pr_raw.loc[date, 'year'] <= 2019:
         domestic_normal_weekly.loc[date,
@@ -612,7 +612,7 @@ for date in pr_raw.index:
             domestic_normal_weekly['startdate'].dt.year == startdate.year) & (domestic_normal_weekly['startdate'].dt.month == 1)][['weeklyraw']].mean()*domestic_normal_weekly[(
                 domestic_normal_weekly['startdate'].dt.year == 2019) & (domestic_normal_weekly['startdate'].dt.month == 1)][['weeklyraw']].mean()).values
 
-# normalize to positive rate level
+# renormalize to the same levele as the percent positivity
 domestic_normal_weekly.loc[:, 'domestic'] = domestic_normal_weekly.loc[:, 'domestic_raw'] / \
     domestic_normal_weekly[domestic_normal_weekly['year'] <= 2019][[
         'domestic_raw']].values.max()*domestic_normal_weekly.loc[:, 'positive_rate'].max()
@@ -620,11 +620,11 @@ domestic_mitigate_weekly.loc[:, 'domestic'] = domestic_mitigate_weekly.loc[:, 'd
     domestic_normal_weekly[domestic_normal_weekly['year'] <= 2019][[
         'domestic_raw']].values.max()*domestic_mitigate_weekly.loc[:, 'positive_rate'].max()
 
-# international
+# input raw international mobility data
 reg_coef = pd.DataFrame(index=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], columns=[
                         'intercept', 'coef'])
 
-# calculate the regression coef per month
+# impute the missing moblity data under the senario without NPIs
 for month in [1, 2, 5, 6, 7, 8, 9, 10, 11, 12]:
     xtrain = np.array([2019, 2018, 2017, 2016, 2015, 2014,
                       2013, 2012, 2011]).reshape(-1, 1)
@@ -648,7 +648,7 @@ international_raw.loc[201503, 'amount'] = get_prediction_from_reg(
     reg_coef, 3, 2015)[0]
 international_raw.loc[201504, 'amount'] = get_prediction_from_reg(
     reg_coef, 4, 2015)[0]
-# monthly raw
+# montly international mobility 
 month_i_mitigate = pd.DataFrame(index=range(2010, 2023), columns=[
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
 month_i_normal = pd.DataFrame(index=range(2010, 2023), columns=[
@@ -681,7 +681,7 @@ month_i_mitigate.loc[2010, 12] = get_prediction_from_reg(
     reg_coef, 12, 2010)
 
 
-# daily raw
+# transform into daily international mobility 
 international_normal = pd.DataFrame(index=pd.date_range(
     '2010-12-01', '2022-12-31'), columns=['volume', 'ma'])
 international_mitigate = pd.DataFrame(index=pd.date_range(
@@ -692,14 +692,14 @@ for date in international_normal.index:
     international_mitigate.loc[date, 'volume'] = month_i_mitigate.loc[date.year,
                                                                       date.month]/date.days_in_month
 
-# moving average
+# take moving average
 for date in pd.date_range('2011-01-01', '2022-12-31'):
     startdate = date-pd.DateOffset(days=csma)
     international_normal.loc[date,
                              'ma'] = international_normal.loc[startdate:date, 'volume'].mean()
     international_mitigate.loc[date,
                                'ma'] = international_mitigate.loc[startdate:date, 'volume'].mean()
-# weekly sum
+# aggregate to weekly levels
 international_normal_weekly = pr_raw.copy()
 international_mitigate_weekly = pr_raw.copy()
 for date in pr_raw.index:
@@ -710,7 +710,7 @@ for date in pr_raw.index:
     international_mitigate_weekly.loc[date,
                                       'weeklyraw'] = international_mitigate.loc[start:end, 'ma'].sum().reshape(-1)
 
-# normalized by first month
+# normalize using the percent positivity in the first month
 for date in pr_raw.index:
     startdate = pr_raw.loc[date, 'startdate']
     international_normal_weekly.loc[date, 'international_raw'] = (international_normal_weekly.loc[date, 'weeklyraw']/international_normal_weekly[(
@@ -718,7 +718,7 @@ for date in pr_raw.index:
     international_mitigate_weekly.loc[date, 'international_raw'] = (international_mitigate_weekly.loc[date, 'weeklyraw']/international_normal_weekly[(
         international_normal_weekly['year'] == pr_raw.loc[date, 'year']) & (international_normal_weekly['startdate'].dt.month == 1)][['weeklyraw']].mean()).values
 
-# normalize to positive rate level
+# renormalize to the same level as the percent positive 
 international_normal_weekly.loc[:, 'international'] = international_normal_weekly.loc[:, 'international_raw'] / \
     international_normal_weekly[international_normal_weekly['year'] <= 2019][[
         'international_raw']].values.max()*international_normal_weekly.loc[:, 'positive_rate'].max()
@@ -733,7 +733,7 @@ indicator['indicator'] = 0
 idx = indicator[(indicator['week'] >= seasonstart) |
                 (indicator['week'] <= seasonend)].index
 indicator.loc[idx, 'indicator'] = 1
-# file output
+# output files
 # csib3
 out = pr_raw.loc[201114:202252, ['year', 'week', 'positive_rate']].copy()
 out['t2'] = 0
@@ -887,7 +887,7 @@ out.loc[202140:, 'cpl'] = 0
 out.to_csv(outputbasefolder+'cslog.csv', header=True, index=True)
 
 # usa
-# read raw_data
+# input raw domestic mobility data
 region = 'usa'
 pr_raw = pd.read_csv(basefolder+'raw_data/'+region+'.csv', header=0, index_col=0)
 pr_raw['startdate'] = pd.to_datetime(pr_raw['startdate'])
@@ -897,8 +897,7 @@ domestic_raw = pd.read_csv(basefolder+
 international_raw = pd.read_csv(basefolder+
     'raw_data/'+region+'international.csv', header=0, index_col=0)
 
-# domestic
-# calculate the regression coef per month
+# impute the missing moblity data under the senario without NPIs
 reg_coef = pd.DataFrame(index=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], columns=[
                         'intercept', 'coef'])
 
@@ -913,7 +912,7 @@ for month in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]:
     reg_coef.loc[month, 'intercept'] = model.intercept_
     reg_coef.loc[month, 'coef'] = model.coef_[0]
 
-# monthly raw
+
 month_d_mitigate = pd.DataFrame(index=range(2010, 2023), columns=[
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
 month_d_normal = pd.DataFrame(index=range(2010, 2023), columns=[
@@ -942,7 +941,7 @@ for month in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]:
                          month] = month_d_mitigate.loc[2021, month]+reg_coef.loc[month, 'coef']
 month_d_mitigate.loc[2010, 12] = domestic_raw.loc[201012, 'amount']
 
-# daily raw
+
 domestic_normal = pd.DataFrame(index=pd.date_range(
     '2010-12-01', '2022-12-31'), columns=['volume', 'ma'])
 domestic_mitigate = pd.DataFrame(index=pd.date_range(
@@ -953,7 +952,7 @@ for date in domestic_normal.index:
     domestic_mitigate.loc[date, 'volume'] = month_d_mitigate.loc[date.year,
                                                                  date.month]/date.days_in_month
 
-# moving average
+# take moving average
 for date in pd.date_range('2011-01-01', '2022-12-31'):
     startdate = date-pd.DateOffset(days=usama)
     domestic_normal.loc[date,
@@ -961,7 +960,7 @@ for date in pd.date_range('2011-01-01', '2022-12-31'):
     domestic_mitigate.loc[date,
                           'ma'] = domestic_mitigate.loc[startdate:date, 'volume'].mean()
 
-# weekly sum
+# aggregate to weekly levels
 domestic_normal_weekly = pr_raw.copy()
 domestic_mitigate_weekly = pr_raw.copy()
 for date in pr_raw.index:
@@ -972,7 +971,7 @@ for date in pr_raw.index:
     domestic_mitigate_weekly.loc[date,
                                  'weeklyraw'] = np.array(domestic_mitigate.loc[start:end, 'ma'].sum()).reshape(-1)
 
-# normalized by first month
+# normalize using the flu acitivity in the first month
 normcoef = pd.DataFrame(index=range(2011, 2023),
                         columns=['coef'])
 for year in range(2011, 2023):
@@ -986,7 +985,7 @@ for date in pr_raw.index:
     domestic_mitigate_weekly.loc[date, 'domestic_raw'] = domestic_mitigate_weekly.loc[date,
                                                                                       'weeklyraw']/normcoef.loc[domestic_mitigate_weekly.loc[date, 'year'], 'coef']
 
-# normalize to positive rate level
+# renormalize to the same levele as the percent positivity
 domestic_normal_weekly.loc[:, 'domestic'] = domestic_normal_weekly.loc[:, 'domestic_raw'] / \
     domestic_normal_weekly[domestic_normal_weekly['year'] <= 2019][[
         'domestic_raw']].values.max()*domestic_normal_weekly.loc[:, 'positive_rate'].max()
@@ -994,8 +993,7 @@ domestic_mitigate_weekly.loc[:, 'domestic'] = domestic_mitigate_weekly.loc[:, 'd
     domestic_normal_weekly[domestic_normal_weekly['year'] <= 2019][[
         'domestic_raw']].values.max()*domestic_mitigate_weekly.loc[:, 'positive_rate'].max()
 
-# international
-# calculate the regression coef per month
+# impute the missing moblity data under the senario without NPIs
 reg_coef = pd.DataFrame(index=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], columns=[
                         'intercept', 'coef'])
 
@@ -1010,7 +1008,7 @@ for month in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]:
     reg_coef.loc[month, 'intercept'] = model.intercept_
     reg_coef.loc[month, 'coef'] = model.coef_[0]
 
-# monthly raw
+# montly international mobility 
 month_i_mitigate = pd.DataFrame(index=range(2010, 2023), columns=[
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
 month_i_normal = pd.DataFrame(index=range(2010, 2023), columns=[
@@ -1039,7 +1037,7 @@ for month in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]:
                          month] = month_i_mitigate.loc[2021, month]+reg_coef.loc[month, 'coef']
 month_i_mitigate.loc[2010, 12] = get_prediction_from_reg(reg_coef, 12, 2010)
 
-# daily raw
+# transform into daily international mobility 
 international_normal = pd.DataFrame(index=pd.date_range(
     '2010-12-01', '2022-12-31'), columns=['volume', 'ma'])
 international_mitigate = pd.DataFrame(index=pd.date_range(
@@ -1050,7 +1048,7 @@ for date in international_normal.index:
     international_mitigate.loc[date, 'volume'] = month_i_mitigate.loc[date.year,
                                                                       date.month]/date.days_in_month
 
-# moving average
+# take moving average
 for date in pd.date_range('2011-01-01', '2022-12-31'):
     startdate = date-pd.DateOffset(days=usama)
     international_normal.loc[date,
@@ -1058,7 +1056,7 @@ for date in pd.date_range('2011-01-01', '2022-12-31'):
     international_mitigate.loc[date,
                                'ma'] = international_mitigate.loc[startdate:date, 'volume'].mean()
 
-# weekly sum
+# aggregate to weekly levels
 international_normal_weekly = pr_raw.copy()
 international_mitigate_weekly = pr_raw.copy()
 for date in pr_raw.index:
@@ -1069,7 +1067,7 @@ for date in pr_raw.index:
     international_mitigate_weekly.loc[date,
                                       'weeklyraw'] = np.array(international_mitigate.loc[start:end, 'ma'].sum()).reshape(-1)
 
-# normalized by first month
+# normalize using the percent positivity in the first month
 for date in pr_raw.index:
     startdate = pr_raw.loc[date, 'startdate']
     international_normal_weekly.loc[date, 'international_raw'] = (international_normal_weekly.loc[date, 'weeklyraw']/international_normal_weekly[(
@@ -1077,7 +1075,7 @@ for date in pr_raw.index:
     international_mitigate_weekly.loc[date, 'international_raw'] = (international_mitigate_weekly.loc[date, 'weeklyraw']/international_normal_weekly[(
         international_normal_weekly['startdate'].dt.year == startdate.year) & (international_normal_weekly['startdate'].dt.month == 1)][['weeklyraw']].mean()).values
 
-# normalize to positive rate level
+# renormalize to the same level as the percent positive 
 international_normal_weekly.loc[:, 'international'] = international_normal_weekly.loc[:, 'international_raw'] / \
     international_normal_weekly[international_normal_weekly['year'] <= 2019][[
         'international_raw']].values.max()*international_normal_weekly.loc[:, 'positive_rate'].max()
@@ -1092,7 +1090,7 @@ indicator['indicator'] = 0
 idx = indicator[(indicator['week'] >= seasonstart) |
                 (indicator['week'] <= seasonend)].index
 indicator.loc[idx, 'indicator'] = 1
-# file output
+# output files
 # usa
 out = pr_raw.loc[201140:202252, ['year', 'week', 'positive_rate']].copy()
 out['t2'] = 0
@@ -1249,7 +1247,7 @@ out.loc[:, 'vw'] = international_normal_weekly.loc[out.index,
 out.to_csv(outputbasefolder+'usamvmi.csv', header=True, index=True)
 
 # england
-# read raw_data
+# input raw domestic mobility data
 region = 'uk'
 pr_raw = pd.read_csv(basefolder+'raw_data/'+region+'.csv', header=0, index_col=0)
 pr_raw['startdate'] = pd.to_datetime(pr_raw['startdate'])
@@ -1261,8 +1259,8 @@ domestic_raw_0305 = pd.read_csv(basefolder+
 international_raw = pd.read_csv(basefolder+
     'raw_data/'+region+'international.csv', header=0, index_col=0)
 
-# domestic
-# calculate the regression coef per quarter
+
+# impute the missing moblity data under the senario without NPIs
 reg_coef = pd.DataFrame(index=[1, 2, 3, 4], columns=[
                         'intercept', 'coef'])
 
@@ -1277,7 +1275,7 @@ for quarter in [1, 2, 3, 4]:
     reg_coef.loc[quarter, 'intercept'] = model.intercept_
     reg_coef.loc[quarter, 'coef'] = model.coef_[0]
 
-# quarterly raw
+
 quarter_d_mitigate = pd.DataFrame(index=range(2010, 2023), columns=[
     1, 2, 3, 4])
 quarter_d_normal = pd.DataFrame(index=range(2010, 2023), columns=[
@@ -1307,7 +1305,7 @@ for quarter in range(1, 5):
     quarter_d_mitigate.loc[2022, quarter] = quarter_d_mitigate.loc[2021,
                                                                    quarter]+reg_coef.loc[quarter, 'coef']
 
-# monthly raw
+
 month_d_mitigate = pd.DataFrame(index=range(2010, 2023), columns=[
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
 month_d_normal = pd.DataFrame(index=range(2010, 2023), columns=[
@@ -1322,7 +1320,7 @@ for month in range(1, 13):
     month_d_mitigate.loc[2020,
                          month] = month_d_mitigate.loc[2019, month]*domestic_raw_0305.loc[month, 'average']/100
 
-# daily raw
+# daily domestic mobility
 domestic_normal = pd.DataFrame(index=pd.date_range(
     '2010-12-01', '2022-12-31'), columns=['volume', 'ma'])
 domestic_mitigate = pd.DataFrame(index=pd.date_range(
@@ -1333,7 +1331,7 @@ for date in domestic_normal.index:
     domestic_mitigate.loc[date, 'volume'] = month_d_mitigate.loc[date.year,
                                                                  date.month]/date.days_in_month
 
-# moving average
+# take moving average
 for date in pd.date_range('2011-01-01', '2022-12-31'):
     startdate = date-pd.DateOffset(days=ukma)
     domestic_normal.loc[date,
@@ -1341,7 +1339,7 @@ for date in pd.date_range('2011-01-01', '2022-12-31'):
     domestic_mitigate.loc[date,
                           'ma'] = domestic_mitigate.loc[startdate:date, 'volume'].mean()
 
-# weekly sum
+# aggregate to weekly levels
 domestic_normal_weekly = pr_raw.copy()
 domestic_mitigate_weekly = pr_raw.copy()
 for date in pr_raw.index:
@@ -1352,7 +1350,7 @@ for date in pr_raw.index:
     domestic_mitigate_weekly.loc[date,
                                  'weeklyraw'] = domestic_mitigate.loc[start:end, 'ma'].sum().reshape(-1)
 
-# normalized by first month
+# normalize using the flu acitivity in the first month
 normcoef = pd.DataFrame(index=range(2011, 2023),
                         columns=['mitigate', 'normal'])
 for year in range(2011, 2023):
@@ -1369,7 +1367,7 @@ for date in pr_raw.index:
     domestic_mitigate_weekly.loc[date, 'domestic_raw'] = domestic_mitigate_weekly.loc[date,
                                                                                       'weeklyraw']/normcoef.loc[domestic_mitigate_weekly.loc[date, 'year'], 'mitigate']
 
-# normalize to positive rate level
+# renormalize to the same levele as the percent positivity
 domestic_normal_weekly.loc[:, 'domestic'] = domestic_normal_weekly.loc[:, 'domestic_raw'] / \
     domestic_normal_weekly[domestic_normal_weekly['year'] <= 2019][[
         'domestic_raw']].values.max()*domestic_normal_weekly.loc[:, 'positive_rate'].max()
@@ -1377,8 +1375,7 @@ domestic_mitigate_weekly.loc[:, 'domestic'] = domestic_mitigate_weekly.loc[:, 'd
     domestic_normal_weekly[domestic_normal_weekly['year'] <= 2019][[
         'domestic_raw']].values.max()*domestic_mitigate_weekly.loc[:, 'positive_rate'].max()
 
-# international
-# calculate the regression coef per quarter
+# impute the missing moblity data under the senario without NPIs
 reg_coef = pd.DataFrame(index=[1, 2, 3, 4], columns=[
                         'intercept', 'coef'])
 
@@ -1393,7 +1390,7 @@ for quarter in [1, 2, 3, 4]:
     reg_coef.loc[quarter, 'intercept'] = model.intercept_
     reg_coef.loc[quarter, 'coef'] = model.coef_[0]
 
-# quarterly raw
+# quarterly international mobility 
 quarter_i_mitigate = pd.DataFrame(index=range(2010, 2023), columns=[
     1, 2, 3, 4])
 quarter_i_normal = pd.DataFrame(index=range(2010, 2023), columns=[
@@ -1423,7 +1420,7 @@ for quarter in range(1, 5):
     quarter_i_mitigate.loc[2022, quarter] = quarter_i_mitigate.loc[2021,
                                                                    quarter]+reg_coef.loc[quarter, 'coef']
 
-# monthly raw
+# montly international mobility 
 month_i_mitigate = pd.DataFrame(index=range(2010, 2023), columns=[
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
 month_i_normal = pd.DataFrame(index=range(2010, 2023), columns=[
@@ -1435,7 +1432,7 @@ for year in range(2010, 2023):
         month_i_mitigate.loc[year,
                              month] = quarter_i_mitigate.loc[year, int((month+2)/3)]/3
 
-# daily raw
+# transform into daily international mobility 
 international_normal = pd.DataFrame(index=pd.date_range(
     '2010-12-01', '2022-12-31'), columns=['volume', 'ma'])
 international_mitigate = pd.DataFrame(index=pd.date_range(
@@ -1446,7 +1443,7 @@ for date in international_normal.index:
     international_mitigate.loc[date, 'volume'] = month_i_mitigate.loc[date.year,
                                                                       date.month]/date.days_in_month
 
-# moving average
+# take moving average
 for date in pd.date_range('2011-01-01', '2022-12-31'):
     startdate = date-pd.DateOffset(days=ukma)
     international_normal.loc[date,
@@ -1454,7 +1451,7 @@ for date in pd.date_range('2011-01-01', '2022-12-31'):
     international_mitigate.loc[date,
                                'ma'] = international_mitigate.loc[startdate:date, 'volume'].mean()
 
-# weekly sum
+# aggregate to weekly levels
 international_normal_weekly = pr_raw.copy()
 international_mitigate_weekly = pr_raw.copy()
 for date in pr_raw.index:
@@ -1465,7 +1462,7 @@ for date in pr_raw.index:
     international_mitigate_weekly.loc[date,
                                       'weeklyraw'] = international_mitigate.loc[start:end, 'ma'].sum().reshape(-1)
 
-# normalized by first month
+# normalize using the percent positivity in the first month
 normcoef = pd.DataFrame(index=range(2011, 2023),
                         columns=['mitigate', 'normal'])
 for year in range(2011, 2023):
@@ -1480,7 +1477,7 @@ for date in pr_raw.index:
     international_mitigate_weekly.loc[date, 'international_raw'] = international_mitigate_weekly.loc[date,
                                                                                                      'weeklyraw']/normcoef.loc[international_mitigate_weekly.loc[date, 'year'], 'mitigate']
 
-# normalize to positive rate level
+# renormalize to the same level as the percent positive 
 international_normal_weekly.loc[:, 'international'] = international_normal_weekly.loc[:, 'international_raw'] / \
     international_normal_weekly[international_normal_weekly['year'] <= 2019][[
         'international_raw']].values.max()*international_normal_weekly.loc[:, 'positive_rate'].max()
@@ -1495,7 +1492,7 @@ indicator['indicator'] = 0
 idx = indicator[(indicator['week'] >= seasonstart) |
                 (indicator['week'] <= seasonend)].index
 indicator.loc[idx, 'indicator'] = 1
-# file output
+# output files
 # uk
 out = pr_raw.loc[201101:202252, ['year', 'week', 'positive_rate']].copy()
 out['t2'] = 0
@@ -1652,7 +1649,7 @@ out.loc[202140:, 'cpl'] = 0
 out.to_csv(outputbasefolder+'uklog.csv', header=True, index=True)
 
 # Hubei Province
-# read raw_data
+# input raw domestic mobility data
 region = 'hb'
 pr_raw = pd.read_csv(basefolder+'raw_data/'+region+'.csv', header=0, index_col=0)
 pr_raw['startdate'] = pd.to_datetime(pr_raw['startdate'])
@@ -1661,8 +1658,8 @@ domestic_raw = pd.read_csv(basefolder+
     'raw_data/'+region+'domestic.csv', header=0, index_col=0)
 domestic_raw.index = pd.to_datetime(domestic_raw.index)
 
-# domestic
-# calculate the montly average
+
+# daily mobility under the scenario without NPIs 
 average_d_mitigate = pd.DataFrame(index=[2019, 2020, 2021], columns=[
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
 average_d_normal = pd.DataFrame(index=[2019, 2020, 2021], columns=[
@@ -1678,7 +1675,7 @@ for year in [2019, 2020, 2021]:
 reg_coef = pd.DataFrame(index=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], columns=[
                         'intercept', 'coef'])
 
-# calculate the daily average regression coef per month
+# impute the missing moblity data under the senario without NPIs
 for month in range(1, 7):
     xtrain = np.array([2019, 2021]).reshape(-1, 1)
     ytrain = average_d_mitigate.loc[[2019, 2021], month].values
@@ -1711,7 +1708,7 @@ domestic_normal = pd.DataFrame(index=pd.date_range(
 domestic_mitigate = pd.DataFrame(index=pd.date_range(
     '2010-12-01', '2022-12-31'), columns=['volume', 'ma'])
 
-# normal daily raw
+# daily domestic mobility under the scenario without NPIs 
 domestic_normal.loc[pd.date_range('2019-01-01', '2021-07-15'),
                     'volume'] = domestic_raw.loc[pd.date_range('2019-01-01', '2021-07-15'), 'volume'].values
 for date in pd.date_range('2020-01-01', '2020-04-30'):
@@ -1735,7 +1732,7 @@ for date in domestic_normal.index:
         domestic_normal.loc[date, 'volume'] = (
             domestic_normal.iloc[pos-1, 0]+domestic_normal.iloc[pos+1, 0])/2
 
-# mitigate daily raw
+# daily domestic mobility under the mobility-related NPIs
 domestic_mitigate.loc[pd.date_range('2019-01-01', '2021-07-15'),
                       'volume'] = domestic_raw.loc[pd.date_range('2019-01-01', '2021-07-15'), 'volume'].values
 for date in pd.date_range('2021-07-16', '2022-12-31'):
@@ -1754,7 +1751,7 @@ for date in domestic_mitigate.index:
         domestic_mitigate.loc[date, 'volume'] = (
             domestic_mitigate.iloc[pos-1, 0]+domestic_mitigate.iloc[pos+1, 0])/2
 
-# moving average
+# take moving average
 ma = 30
 for date in pd.date_range('2011-01-01', '2022-12-31'):
     startdate = date-pd.DateOffset(days=ma)
@@ -1763,7 +1760,7 @@ for date in pd.date_range('2011-01-01', '2022-12-31'):
     domestic_mitigate.loc[date,
                           'ma'] = domestic_mitigate.loc[startdate:date, 'volume'].mean()
 
-# weekly sum
+# aggregate to weekly levels
 domestic_normal_weekly = pr_raw.copy()
 domestic_mitigate_weekly = pr_raw.copy()
 for date in pr_raw.index:
@@ -1773,7 +1770,7 @@ for date in pr_raw.index:
                                'weeklyraw'] = domestic_normal.loc[start:end, 'ma'].sum()
     domestic_mitigate_weekly.loc[date,
                                  'weeklyraw'] = domestic_mitigate.loc[start:end, 'ma'].sum()
-# normalized by first month
+# normalize using the flu acitivity in the first month
 for date in pr_raw.index:
     if pr_raw.loc[date, 'year'] <= 2019:
         domestic_normal_weekly.loc[date,
@@ -1789,7 +1786,7 @@ for date in pr_raw.index:
             domestic_normal_weekly['startdate'].dt.year == startdate.year) & (domestic_normal_weekly['startdate'].dt.month == 1)][['weeklyraw']].mean()*domestic_normal_weekly[(
                 domestic_normal_weekly['startdate'].dt.year == 2019) & (domestic_normal_weekly['startdate'].dt.month == 1)][['weeklyraw']].mean()).values
 
-# normalize to positive rate level
+# renormalize to the same levele as the percent positivity
 domestic_normal_weekly.loc[:, 'domestic'] = domestic_normal_weekly.loc[:, 'domestic_raw'] / \
     domestic_normal_weekly[domestic_normal_weekly['year'] <= 2019][[
         'domestic_raw']].values.max()*domestic_normal_weekly.loc[:, 'positive_rate'].max()
@@ -1797,12 +1794,11 @@ domestic_mitigate_weekly.loc[:, 'domestic'] = domestic_mitigate_weekly.loc[:, 'd
     domestic_normal_weekly[domestic_normal_weekly['year'] <= 2019][[
         'domestic_raw']].values.max()*domestic_mitigate_weekly.loc[:, 'positive_rate'].max()
 
-# international
-# using the international mobility in Southern China
+# input raw international mobility data
 cs = pd.read_csv(outputbasefolder+'csib3.csv', header=0, index_col=0)
 csv2 = pd.read_csv(outputbasefolder+'csiv2b3.csv', header=0, index_col=0)
 
-# file output
+# output files
 # hb
 out = pr_raw.loc[201114:202252, ['year', 'week', 'positive_rate']].copy()
 out['t2'] = 0
