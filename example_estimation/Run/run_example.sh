@@ -85,10 +85,6 @@ bash example_estimation/Run/colleterial.sh
 # dos2unix example_estimation/Run/testformobilityintdom.sh
 bash example_estimation/Run/testformobilityintdom.sh
 
-## predict the effect of different combinations of npis in the future and prepare source data for Figure "Predicted influenza activities in 2021–2022 season under alternative mask-wearing interventions and combined NPIs"
-## dos2unix example_estimation/Run/futurepolicy.sh
-##bash example_estimation/Run/futurepolicy.sh
-
 # calculate the data for the fitness of our model and prepare source data for figure "Influenza activity in 2011-2021"
 # dos2unix example_estimation/Run/fit.sh
 bash example_estimation/Run/fit.sh
