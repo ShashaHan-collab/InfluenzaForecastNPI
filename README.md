@@ -30,24 +30,29 @@ This model first estimates the individual effects of NPIs. It consists of two se
 
 # Descriptions of the files [Yan, pls note, the decsriptions inlcude ALL files and the folders that will be displayed under "main". If you think other structure is more appropriate. We need to discuss and reformulate the structure and rewirte the descriptions accordingly.]
 
-•	preprocessing.py Python script for the pre-processing operation. The script process with the raw data and generates the intermediate data.
+•	scripts, raw data, preprocessed data, example estimation, example forecast
 
-•	imputation_reglike.py[TODO: change the name to "XX".py I did not understand the roles of the file, pls discuss with me on the name]: Python script for the main operation.[Is my interpretation here correct?] The script estimates the effect of one-week increase in NPIs and forecast seasonal influenza activities using the intermediate data generated from the pre-process. The script generates the XX with respect to the study regions. 
+example estimation/ Run/.,Source data/,Source plot/.
+example forecast/ Run/.,Source data/,Source plot/.
 
-•	calavgpercent[TODO: change the name to "XX".py I did not understand the roles of the file, pls discuss with me on the name]]: Python script to calculate mean, upper and lower bound of XXX[??I am not clear here]. 
+•	scripts/preprocessing.py Python script for the pre-processing operation. The script process with the raw data and generates the intermediate data.
 
-•	calculateCI_v3.py[TODO: change the name to calculate_statistics]: Python script to XXX.
+•	scripts/imputation_reglike.py[TODO: change the name to "estimation_forecast.py" ]: Python script for the main operation.[Is my interpretation here correct?] The script estimates the effect of one-week increase in NPIs and forecast seasonal influenza activities using the intermediate data generated from the pre-process. The script generates the XX with respect to the study regions. 
 
-•	choosel_V2.py[TODO: change the name to param_mask_reg.py]: Python script to select the parameters for the second muliple regression model that are used to estimate the effect of a 1-week increase of mask-wearing interventions.
+•	scripts/calavgpercent[TODO: change the name to "calculate_plot_statistics.py" ]: Python script to calculate mean, upper and lower bound of XXX[??I am not clear here]. 
+
+•	scripts/calculateCI_v3.py[TODO: change the name to "calculate_report_statistics.py"]: Python script to XXX.
+
+•	scripts/choosel_V2.py[TODO: change the name to "param_mask_reg.py"]: Python script to select the parameters for the second muliple regression model that are used to estimate the effect of a 1-week increase of mask-wearing interventions.
 
 
-•	moveandrename.py[TODO: change the name to name_data.py?]: Python script to name intermediate data on estimates?? . [I didnot understand. ]
+•	scripts/moveandrename.py[TODO: change the name to "auxiliary_name_file.py"?]: Python script to name intermediate data on estimates?? . [I didnot understand. ]
 
-•	movetoexcel.py[TODO: change the name to gen_data_plot.py]: Python script to generate data as csv format for plotting in R.
+•	scripts/movetoexcel.py[TODO: change the name to "auxiliary_gen_excel_data.py"]: Python script to generate data as csv format for plotting in R.
 
-•	Raw data: This folder contains the raw data.
+•	raw data: This folder contains the raw data.
 
-•	Proprecessed data: This folder contains the intermediate data after pre-processing. 
+•	proprecessed data: This folder contains the intermediate data after pre-processing. 
 
 
 •	Example estimation: The folder contains the input, intermediary and output data for an example of running the estimation model. The demo uses the data from the four regions we studied in the paper.
