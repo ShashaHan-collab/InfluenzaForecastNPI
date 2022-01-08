@@ -6,7 +6,7 @@ Han, S., Zhang, T., Lyu, Y. et al. The Incoming Influenza Season — China, the 
 
 Han, S., Zhang, T., Lyu, Y. et al. Influenza’s plummeting during the COVID-19 pandemic: the roles of mask-wearing, mobility change, and SARS-CoV-2 interference. Engineering (2022). Forthcoming.
 
-For an example run of estimation of individual effects of mask-wearing intervention, mobility change, and SARS-CoV2 interference in the four regions that we studied in the paper, including nother China, southern China, England and the United States, please see "example_estimation/Run", which uses the data from "preprocessed_data". For an example run of forecast the influenza activity in the four regions in the 2021-2022 influenza season, please see "example_forecast/Run", which uses the data from "preprocessed_data". For an example run of pre-processing the raw data from the four regions, please see "preprocessing.py", which generates the intermediate dataset "preprocessed_data".
+For an example run of estimation of individual effects of mask-wearing intervention, mobility change, and SARS-CoV2 interference in the four regions that we studied in the paper, including nother China, southern China, England and the United States, please see "example_estimation/Run/run_example.sh", which uses the data from "preprocessed_data". For an example run of forecast the influenza activity in the four regions in the 2021-2022 influenza season, please see "example_forecast/Run/run_example.sh", which uses the data from "preprocessed_data". For an example run of pre-processing the raw data from the four regions, please see "preprocessing.py", which generates the intermediate dataset "preprocessed_data".
 
 # Overall model
 This model first estimates the individual effects of NPIs. It consists of two self-correcting regularized multiple regression models, both of which are dynamically trained and regularized using the LASSO method. Estimated effects were then used to predict the influenza activity in the future.
@@ -53,9 +53,11 @@ This model first estimates the individual effects of NPIs. It consists of two se
 
 •	proprecessed data: This folder contains the intermediate data after pre-processing. 
 
-•	example_estimation: The folder contains the input, intermediary and output data for an example of running the estimation model. The demo uses the data from the four regions we studied in the paper.
+•	example_estimation: The folder contains Python scripts for an example of running estimation model. The demo uses the data from the four regions we studied in the paper. Output data are stored in the folder "result".
 
-•	example_forecast: The folder contains the input, intermediary and output data for an example of running the forecast model.The demo uses the data from the four regions we studied in the paper.
+•	example_forecast: The folder contains Python scripts for an example of running forecast model. The demo uses the data from the four regions we studied in the paper. Output dataare stored in the folder "result".
+
+•	result: The folder contains ouputs of running examples of running estimation and forecast models.
 
 •	example_estimation/Source data: The folder contains all the generated data for reproducing the figures in the paper : Han, S., Zhang, T., Lyu, Y. et al. Influenza’s plummeting during the COVID-19 pandemic: the roles of mask-wearing, mobility change, and SARS-CoV-2 interference. Engineering (2022). Forthcoming.
 
