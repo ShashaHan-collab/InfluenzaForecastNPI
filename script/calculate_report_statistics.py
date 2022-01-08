@@ -4,18 +4,20 @@ import pandas as pd
 import numpy as np
 
 # Takes in the parameters that representing the CI we are interested in, read the corresponding predicted values and calculates and returns the CI. 
-# The meaning for parameters are as follow
-# name = The type of CI we want to calculate
-# starttime = Starting time of the time interval that we calculate CI
-# endtime = Ending time of the time interval that we calculate CI
-# basepath = Path of file used as base in calculation of CI
-# targetpath = Path of file used as target in calculation of CI. By default, CI is confidence interval for target - base
-# basetype = Used for source file data format handling.
-# targettype = Used for source file data format handling.
-# tau = indicator for the calculation of CI for Tau
-# tau_intercept = indicator for the calculation of CI for the intercept of the mask model
-# internationalvolume = indicator for the calculation of CI for the coef of international volume/predicted flu level
-# bs = Whether to use bootstrap when calculating CI
+# Below are brief descriptions of abbrevations used. 
+
+# name - in a range of mean, 95% upper CI, 95% lower CI
+# starttime - starting week of an influenza season
+# endtime - ending week of an influenza season
+# basepath - data on percent positivity under scenarios without NPIs
+# targetpath - data on percent positivity under scenarios with NPIs of inferest
+# basetype - reformation method for data on percent positivity under scenarios without NPIs
+# targettype - reformation method for data on percent positivity under scenarios with NPIs of inferest
+# tau - estimated parameter effects of one-week in mask-wearing interventions
+# tau_intercept - estimated intercept in maks models
+# internationalvolume - ratio of international mobility and percent positivity
+# bs - true if bootstrap is used in calculating CI
+
 def calculateCI(basepath, targetpath, basetype, starttime, endtime, tau=False, targettype='', tau_intercept=False, internationalvolume=False, bs=False):
     bstimes = 10000
     np.random.seed(0)
@@ -126,9 +128,6 @@ usa21s = 202148
 usa21e = 202215
 hb19s = cn19s
 hb19e = cs19e
-
-# each part calcultes a CI. 
-
 
 
 print('calculating COVID-19 - No COVID')
