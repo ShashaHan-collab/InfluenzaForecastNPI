@@ -1,5 +1,5 @@
 rm(list = ls())
-
+setwd("~/InfluenzaForecastNPI-main/example_forecast/")
 library(tidyverse)
 library(glue)
 library(xlsx)
