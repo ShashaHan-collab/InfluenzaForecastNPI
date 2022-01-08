@@ -6,10 +6,10 @@ Han, S., Zhang, T., Lyu, Y. et al. The Incoming Influenza Season — China, the 
 
 Han, S., Zhang, T., Lyu, Y. et al. Influenza’s plummeting during the COVID-19 pandemic: the roles of mask-wearing, mobility change, and SARS-CoV-2 interference. Engineering (2022). Forthcoming.
 
-For an example run of estimation of individual effects of mask-wearing intervention, mobility change, and SARS-CoV2 interference in the four regions that we studied in the paper, including nother China, southern China, England and the United States, please see "example_estimation/Run/run_example.sh", which uses the data from "preprocessed_data". For an example run of forecast the influenza activity in the four regions in the 2021-2022 influenza season, please see "example_forecast/Run/run_example.sh", which uses the data from "preprocessed_data". For an example run of pre-processing the raw data from the four regions, please see "preprocessing.py", which generates the intermediate dataset "preprocessed_data".
+For an example run of estimation of individual effects of mask-wearing intervention, mobility change, and SARS-CoV2 interference in the four regions, including nother China, southern China, England and the United States, please see "example_estimation/Run/run_example.sh", which uses the data from "preprocessed_data". For an example run of forecast the influenza activity in the four regions in the 2021-2022 influenza season, please see "example_forecast/Run/run_example.sh", which uses the data from "preprocessed_data". For an example run of pre-processing the raw data from the four regions, please see "preprocessing.py", which generates the intermediate dataset "preprocessed_data".
 
 # Overall model
-This model first estimates the individual effects of NPIs. It consists of two self-correcting regularized multiple regression models, both of which are dynamically trained and regularized using the LASSO method. Estimated effects were then used to predict the influenza activity in the future.
+This model first estimates the individual effects of NPIs. It consists of two self-correcting regularized multiple regression models, both of which are dynamically trained and regularized using the LASSO method. Estimated effects are then used to predict influenza activity in the future.
 # Prerequisites
 ## Prerequisite software
 •	Python version 3.6.13.
@@ -31,21 +31,21 @@ This model first estimates the individual effects of NPIs. It consists of two se
 
 # Descriptions of the files 
 
-•	The main folder inlcudes six subfolders: scripts, raw data, preprocessed data, example_estimation, example_forecast, result
+•	The main folder includes six subfolders: scripts, raw data, pre-processed data, example_estimation, example_forecast, result.
 
 
-•	scripts/preprocessing.py Python script for the pre-processing operation. The script performs with the raw data and generates the preprocessed data.
+•	scripts/preprocessing.py: Python script for the pre-processing operation. The script performs with the raw data and generates the pre-processed data.
 
-•	scripts/estimation_forecast.py: Python script for the main operation. The script estimates the effect of one-week increase in NPIs and forecast seasonal influenza activities using the intermediate data generated from "preprocessed data". 
+•	scripts/estimation_forecast.py: Python script for the main operation. The script estimates effects of one-week increase in NPIs and forecasts seasonal influenza activities using data from the folder "preprocessed data". 
 
-•	scripts/calculate_plot_statistics.py: Python script to calculate mean, upper and lower bound of percenty positivity at each time point. 
+•	scripts/calculate_plot_statistics.py: Python script to calculate mean, upper and lower confidence intervals of percent positivity at each time point.
 
-•	scripts/calculate_report_statistics.py: Python script to calculate mean, upper and lower bound of reduced percenty positivity within influenza seasons.
+•	scripts/calculate_report_statistics.py: Python script to calculate mean, upper and lower confidence intervals of reduced percenty positivity within influenza seasons.
 
-•	scripts/param_mask_reg.py: Python script to select the parameters for the second muliple regression model that are used to estimate the effect of a 1-week increase of mask-wearing interventions.
+•	scripts/param_mask_reg.py: Python script to select the parameters for the second muliple regression model that is used to estimate effects of a 1-week increase of mask-wearing interventions.
 
 
-•	scripts/auxiliary_name_file.py: Python auxiliary script to name the files.
+•	scripts/auxiliary_name_file.py: Python auxiliary script to rename data files.
 
 •	scripts/auxiliary_gen_excel_data.py: Python auxiliaryscript to generate data as csv format for plotting in R.
 
@@ -53,17 +53,17 @@ This model first estimates the individual effects of NPIs. It consists of two se
 
 •	proprecessed data: This folder contains the intermediate data after pre-processing. 
 
-•	example_estimation: The folder contains Python scripts for an example of running estimation model. The demo uses the data from the four regions we studied in the paper. Output data are stored in the folder "result".
+•	example_estimation: The folder contains Python scripts for an example of running estimation model. The demo uses data from the four regions we studied in the paper. Output data are stored in the folder "result".
 
-•	example_forecast: The folder contains Python scripts for an example of running forecast model. The demo uses the data from the four regions we studied in the paper. Output dataare stored in the folder "result".
+•	example_forecast: The folder contains Python scripts for an example of running forecast model. The demo uses data from the four regions we studied in the paper. Output dataare stored in the folder "result".
 
-•	result: The folder contains ouputs of running examples of running estimation and forecast models.
+•	result: The folder contains output data generated by running examples of estimation and forecast models.
 
-•	example_estimation/Source data: The folder contains all the generated data for reproducing the figures in the paper : Han, S., Zhang, T., Lyu, Y. et al. Influenza’s plummeting during the COVID-19 pandemic: the roles of mask-wearing, mobility change, and SARS-CoV-2 interference. Engineering (2022). Forthcoming.
+•	example_estimation/Source data: The folder contains all generated data for reproducing the figures in the paper : Han, S., Zhang, T., Lyu, Y. et al. Influenza’s plummeting during the COVID-19 pandemic: the roles of mask-wearing, mobility change, and SARS-CoV-2 interference. Engineering (2022). Forthcoming.
 
 •	example_estimation/Source plot: The folder contains the plotting code for reproducing the figures in the paper : Han, S., Zhang, T., Lyu, Y. et al. Influenza’s plummeting during the COVID-19 pandemic: the roles of mask-wearing, mobility change, and SARS-CoV-2 interference. Engineering (2022). Forthcoming.
 
-•	example_forecast/Source data: The folder contains all the generated data for reproducing the figures in the paper : Han, S., Zhang, T., Lyu, Y. et al. The Incoming Influenza Season — China, the United Kingdom, and the United States, 2021–2022. China CDC Weekly 3(39):10.39-1045. (2021). http://weekly.chinacdc.cn/en/article/doi/10.46234/ccdcw2021.253.
+•	example_forecast/Source data: The folder contains all generated data for reproducing the figures in the paper : Han, S., Zhang, T., Lyu, Y. et al. The Incoming Influenza Season — China, the United Kingdom, and the United States, 2021–2022. China CDC Weekly 3(39):10.39-1045. (2021). http://weekly.chinacdc.cn/en/article/doi/10.46234/ccdcw2021.253.
 
 •	example_forecast/Source plot: The folder contains the plotting code for reproducing the figures in the paper : Han, S., Zhang, T., Lyu, Y. et al. The Incoming Influenza Season — China, the United Kingdom, and the United States, 2021–2022. China CDC Weekly 3(39):10.39-1045. (2021). http://weekly.chinacdc.cn/en/article/doi/10.46234/ccdcw2021.253.
 
