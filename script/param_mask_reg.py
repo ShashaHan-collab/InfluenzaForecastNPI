@@ -1,4 +1,5 @@
-# Called by the bash script. Parameter selection for the second regression model that is used to estimate the effects of mask-wearing interventions
+# Called by the bash script. Parameter selection for the second regression model. Outputs are used to estimate the effects of mask-wearing interventions.
+
 from numpy.core.numeric import Inf
 import pandas as pd
 from sklearn import linear_model
@@ -91,7 +92,7 @@ def main():
                     coef = lmodel.coef_[0]
                     intercept = lmodel.intercept_ if fitintercept else 0
                     bestraw = rawdf.copy()
-            # Output the estimates and values of R squared. Best values are selected according to R squared criterion
+            # Output the estimates and values of R squared. Best values are selected according to the R squared criterion
             print('result for '+paras['ymask'] + " starting from "+str(
                 start)+' and theta=' + str(theta) + ' and delta=' + str(delta))
             print("max L = " + str(maxl))
