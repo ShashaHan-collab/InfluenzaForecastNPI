@@ -27,7 +27,7 @@
 # newclagnum - tensity of mask-wearing interventions
 # newclag - true if do experiments different magnitudies of mask-wearing interventions. 
 # newclagtp - starting points for different timing of mask-wearing interventions. 
-# vaccine - effect of vaccination
+# vaccine - influenza vaccine efficacy
 
 from tqdm import tqdm
 import numpy as np
