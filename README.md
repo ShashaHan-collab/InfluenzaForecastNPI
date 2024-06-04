@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/443247654.svg)](https://zenodo.org/doi/10.5281/zenodo.5831507)
 # InfluenzaForecastNPI
 
 Time-series Influenza Activity Forecast Model
